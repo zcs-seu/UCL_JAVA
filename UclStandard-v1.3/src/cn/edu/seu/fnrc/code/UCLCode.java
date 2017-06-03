@@ -1,5 +1,5 @@
 package cn.edu.seu.fnrc.code;
-import crc.CRC16;
+import cn.edu.seu.utils.CRC16;
 public class UCLCode {
 	/**
 	* <p>Class description: UCLCode,UCL Code class</p>

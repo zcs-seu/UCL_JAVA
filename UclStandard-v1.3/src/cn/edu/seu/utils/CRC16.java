@@ -1,12 +1,12 @@
-package crc;
+package cn.edu.seu.utils;
 import java.lang.String;
 /** 
  * CRC16相关计算  
  
  * encode: utf-8 
  *  
- * @author 何伟亮
- * @date 201６-12-2７ 
+ * @author 何伟�?
+ * @date 201�?-12-2�? 
  */  
 public class CRC16 {  
     static byte[] crc16_tab_h = { (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01, (byte) 0xC0,  
@@ -25,8 +25,8 @@ public class CRC16 {
      * 计算CRC16校验 
      *  
      * @param data 
-     *            需要计算的数组 
-     * @return CRC16校验值 
+     *            �?要计算的数组 
+     * @return CRC16校验�? 
      */  
     public static int calcCrc16(byte[] data) {  
         return calcCrc16(data, 0, data.length);  
@@ -36,12 +36,12 @@ public class CRC16 {
      * 计算CRC16校验 
      *  
      * @param data 
-     *            需要计算的数组 
+     *            �?要计算的数组 
      * @param offset 
      *            起始位置 
      * @param len 
      *            长度 
-     * @return CRC16校验值 
+     * @return CRC16校验�? 
      */  
     public static int calcCrc16(byte[] data, int offset, int len) {  
         return calcCrc16(data, offset, len, 0xffff);  
@@ -51,14 +51,14 @@ public class CRC16 {
      * 计算CRC16校验 
      *  
      * @param data 
-     *            需要计算的数组 
+     *            �?要计算的数组 
      * @param offset 
      *            起始位置 
      * @param len 
      *            长度 
      * @param preval 
-     *            之前的校验值 
-     * @return CRC16校验值 
+     *            之前的校验�?? 
+     * @return CRC16校验�? 
      */  
     public static int calcCrc16(byte[] data, int offset, int len, int preval) {  
         int ucCRCHi = (preval & 0xff00) >> 8;  
