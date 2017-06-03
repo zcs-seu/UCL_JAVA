@@ -59,7 +59,7 @@ public class Encrypt {
 	public static String encrypt(String str,String encryptType){
 		try{
 			switch(encryptType){
-			case "MD5":
+			case "MD5":   
 				return EncoderByMd5(str);
 			case "SHA-256":
 				return EncoderBySHA256(str);
