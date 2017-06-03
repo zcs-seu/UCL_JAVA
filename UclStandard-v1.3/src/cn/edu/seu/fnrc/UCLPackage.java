@@ -354,8 +354,6 @@ public class UCLPackage {
     public static String switchHelper(int helper, String s){
         switch(helper)
         {
-            case 0:
-                break;
             case 1:
                 //RSA
                 break;
