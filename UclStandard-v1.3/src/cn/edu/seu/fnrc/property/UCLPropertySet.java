@@ -27,7 +27,6 @@ public class UCLPropertySet {
 		
 		// TODO 自动生成的构造函数存根
 		propertyHead = new UCLPropertyHead();
-		propertyHead.setTotalLength();
 		
 	}
 	
@@ -116,6 +115,7 @@ public class UCLPropertySet {
     public boolean setProperty(UCLPropertyBase property){
     	
     	properties.put(property.getCategory(), property);
+    	setSet();
     	return true;
     	
     }
@@ -124,10 +124,35 @@ public class UCLPropertySet {
     	if(properties.get(category)!=null){
     		properties.remove(category);
     	}
+    	setSet();
     	return true;
     	
     }
     
+    //根据属性号查找属性集中的某个属性
+    public UCLPropertyBase getProperty(int category)
+    {
+        if(properties.containsKey(category)){
+        	return properties.get(category);
+        }
+        return null;
+    }
+    
+    //设置属性号为pos的属性的值为value
+    public void setPropertyVPart(int pos, String value)
+    {
+    	UCLPropertyBase prop = getProperty(pos);
+    	if(prop!=null){
+    		prop.setVPart(value);
+    	}
+        setSet();
+    }
+    
+    //根据属性号pos的取得其对应的属性的属性值
+    public String getPropertyVPart(int pos)
+    {
+        return properties.get(pos).getVPart();
+    }
 
     //根据properties生成propertyHead的快速匹配
     public int generateQuickMatcher(){
@@ -160,7 +185,6 @@ public class UCLPropertySet {
     	
     	propertyHead.setQuickMatcher(generateQuickMatcher());
         propertyHead.setVPart(generateHeadVPart());
-        propertyHead.setTotalLength();
     	
     }
     
@@ -211,5 +235,22 @@ public class UCLPropertySet {
                 tmp += lValueNum;
     		}
     	}
+    }
+    
+    /**
+	 * 控制台输出属性集合
+	 * @return void
+	 * @author zhangcs
+	 * @since 2017-5-12
+	 */
+    public void showPropertySet()
+    {
+    	System.out.println("The category of propertySet: "+propertyHead.getCategory());
+        
+        for(int category:properties.keySet())
+        {
+        	System.out.println("The category and value of property: "+category+
+        			"   "+properties.get(category).getVPart());
+        }
     }
 }

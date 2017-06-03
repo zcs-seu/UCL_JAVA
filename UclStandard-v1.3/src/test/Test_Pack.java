@@ -1,10 +1,10 @@
 package test;
 
 import cn.edu.seu.fnrc.CGPSRequired;
-import cn.edu.seu.fnrc.GenerateProperty;
 import cn.edu.seu.fnrc.UCLPackage;
 import cn.edu.seu.fnrc.code.UCLCode;
 import cn.edu.seu.fnrc.code.UCLCodeExtention;
+import cn.edu.seu.fnrc.property.GenerateProperty;
 import cn.edu.seu.fnrc.property.UCLPropertyBase;
 import cn.edu.seu.fnrc.property.UCLPropertyHead;
 import cn.edu.seu.fnrc.property.UCLPropertySet;
@@ -23,6 +23,7 @@ public class Test_Pack {
 	    System.out.println();
 	}
 
+	
 	
 	public static void setUclCode(UCLCode c){
 		byte version=2;
@@ -180,8 +181,6 @@ public class Test_Pack {
 		temp&=0x0000ffff;
 		//System.out.println(Integer.toHexString(temp));
 		
-		
-		
 		String codepackage=c.packcode();
 		c.unpackcode(codepackage);
 		temp=c.getCodeCheckSum();
@@ -194,126 +193,95 @@ public class Test_Pack {
 	
 	public static void testUCL()
 	{
+		System.out.println("\n========== UCL test begin==========\n");
 	    UCLPackage ucl=new UCLPackage();
 
+	    //code
 	    UCLCode code=new UCLCode();
 	    setUclCode(code);
 	    UCLCodeExtention extention=new UCLCodeExtention();
 	    
 	    ucl.setUclCode(code);
 	    ucl.setUclCodeExtention(extention);
-	    UCLPropertySet cdps = GenerateProperty.generateCDPS("SEU");
-	    printPackString(cdps.pack());
-
-	    CGPSRequired cr=new CGPSRequired();
 	    
-	    cr.provenance = "seu";
-	    cr.proDes = 1;
-	    cr.security = ConvertCharSet.toUTF8("贼高");
-	    cr.secHelper = 0;
-	    cr.chain = "seu;thing";
-	    cr.chainCount = 2;
-	    cr.sigUCL = "default";
-	    cr.sigU[0] = 2;
-	    cr.sigU[1] = 1;
-	    UCLPropertySet cgps = GenerateProperty.generateCGPS(cr);
+	    //propsets
+	    
+	    System.out.println("\n##############测试属性##############\n\n");
+	    UCLPropertySet cdps = new UCLPropertySet();
+	    
+	    cdps.setHeadCategory(1);
+	    UCLPropertyBase title = GenerateProperty.generateCDPSTitle("江苏今年起实施“12311”计划 培育百个农业特色镇",2);
+	    UCLPropertyBase keywords = GenerateProperty.generateCDPSKeywords(3, "江苏;乡村;国家",2);
+	    UCLPropertyBase aabstract = GenerateProperty.generateCDPSAbstract("省农委日前在金坛召开全省创意休闲农业工作推进会，决定从今年起实施“12311”创意休闲农业省级特色品牌培育计划",2);
+	    UCLPropertyBase author = GenerateProperty.generateCDPSAuthor(2, 2, "邹建丰:新华日报\\r微博;博客:新浪",2);
+	    UCLPropertyBase entity = GenerateProperty.generateCDPSEntity(31, "江苏省委\\r2017\\r金坛\\r培育计划\\r美丽",2);
+	    UCLPropertyBase tag = GenerateProperty.generateCDPSTag(2, "美丽;乡村" ,2);
+	    UCLPropertyBase copyright = GenerateProperty.generateCDPSCopyright("新华日报",2);
+	    UCLPropertyBase origin = GenerateProperty.generateCDPSOriginality("皱建丰",2);
+	    UCLPropertyBase file = GenerateProperty.generateCDPSFileDescription("文本;10M",2);
+	    UCLPropertyBase related = GenerateProperty.generateCDPSRelatedUCL(3, "ucl1;ucl2;ucl3",2);
+	    UCLPropertyBase content = GenerateProperty.generateCDPSContentObject("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会",2);
+	    cdps.setProperty(title);
+	    cdps.setProperty(keywords);
+	    cdps.setProperty(aabstract);
+	    cdps.setProperty(author);
+	    cdps.setProperty(entity);
+	    cdps.setProperty(tag);
+	    cdps.setProperty(copyright);
+	    cdps.setProperty(origin);
+	    cdps.setProperty(file);
+	    cdps.setProperty(related);
+	    cdps.setProperty(content);
+	    
+	    System.out.println("--------------CDPS-------------- \n");
+	    printPackString(cdps.pack());
+	    ucl.setPropertySet(cdps);
+	    
+	    
+	    UCLPropertySet cgps=new UCLPropertySet();
+	    cgps.setHeadCategory(15);
+	    UCLPropertyBase pro = GenerateProperty.generateCGPSProvenance(1, "http://jiangsu.sina.com.cn/news/b/2017-05-31/detail-ifyfqqyh9080015.shtml",2);
+	    cgps.setProperty(pro);
+	    UCLPropertyBase contentid = GenerateProperty.generateCGPSContentid("sina",2);
+	    cgps.setProperty(contentid);
+	    UCLPropertyBase prog = GenerateProperty.generateCGPSPropagation(2, "baidu;sina",2);
+	    cgps.setProperty(prog);
+	    UCLPropertyBase sigCon = GenerateProperty.generateCGPSSignatureContent("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 3, 0);
+	    cgps.setProperty(sigCon);
+	    UCLPropertyBase security = GenerateProperty.generateCGPSSecurity("重要",2);
+	    cgps.setProperty(security);
+	    UCLPropertyBase chain = GenerateProperty.generateCGPSChain(2, "sian;seu",2);
+	    cgps.setProperty(chain);
+	    UCLPropertyBase sigUCL = GenerateProperty.generateCGPSSignatureUCL(3, 0);
+	    cgps.setProperty(sigUCL);
+	    System.out.println("--------------CGPS-------------- \n");
 	    printPackString(cgps.pack());
 
-	    ucl.setPropertySet(cdps);
 	    ucl.setPropertySet(cgps);
-	    ucl.setUCL();
-	    String pack = ucl.packPropertySets();
-	    printPackString(pack);
-
-	    UCLPackage ucl2=new UCLPackage();
-	    ucl2.unpackPropertySets(pack);
-	    printPackString(ucl2.packPropertySets());
 	    
-	    pack=ucl.pack();
-	    printPackString(pack);
 	    
-	    ucl2=new UCLPackage();
-	    ucl2.unpack(pack);
-	    printPackString(ucl2.pack());
-	}
-	
-	UCLPropertySet testSetUnpack()
-	{
-	    UCLPropertyBase pe = GenerateProperty.generateSNPSPE((byte) 0xe, "我;爱;你");
-	    printPackString(pe.pack());
-
-	    UCLPropertyBase nr = GenerateProperty.generateSNPSNR("abc");
-	    printPackString(nr.pack());
-
-	    UCLPropertySet set0=new UCLPropertySet();
-	    set0.setHeadCategory((byte) 0x0);
-	    set0.setProperty(pe);
-	    set0.setProperty(nr);
-	    set0.setSet();
-	    printPackString(set0.pack());
-
-	    UCLPropertySet set1=new UCLPropertySet();
-	    set1.unpack(set0.pack());
-	    printPackString(set1.pack());
-	    return set1;
-	}
-
-	static UCLPackage testUCLPack()
-	{
-	    //SNPS
-	    UCLPropertyBase pe = GenerateProperty.generateSNPSPE((byte) 0xe, "我;爱;你");
-	    printPackString(pe.pack());
-
-	    UCLPropertyBase nr = GenerateProperty.generateSNPSNR("abc");
-	    printPackString(nr.pack());
-
-	    UCLPropertySet set0=new UCLPropertySet();
-	    set0.setHeadCategory((byte) 0x0);
-                                                                                                                                                                                                                                                                                                                                                                        	    set0.setProperty(pe);
-	    set0.setProperty(nr);
-	    set0.setSet();
-	    printPackString(set0.pack());
-
-	    //CDPS
-	    UCLPropertyBase title = GenerateProperty.generateCDPSTitle("abc");
-	    printPackString(title.pack());
-
-	    UCLPropertyBase keywords = GenerateProperty.generateCDPSKeywords((byte) 3, "a;b;c");
-	    printPackString(keywords.pack());
-
-	    UCLPropertySet set1=new UCLPropertySet();
-	    set1.setHeadCategory((byte) 0x1);
-	    set1.setProperty(title);
-	    set1.setProperty(keywords);
-	    set1.setSet();
-	    printPackString(set1.pack());
-
-	    //CGPS
-	    UCLPropertyBase provenance = GenerateProperty.generateCGPSProvenance((byte) 0x2, "SEU");
-	    printPackString(provenance.pack());
-
-	    UCLPropertyBase contentId = GenerateProperty.generateCGPSContentid("/home/zcs");
-	    printPackString(contentId.pack());
-
-	    UCLPropertySet set2=new UCLPropertySet();
-	    set2.setHeadCategory((byte) 15);
-	    set2.setProperty(provenance);
-	    set2.setProperty(contentId);
-	    set2.setSet();
-	    printPackString(set2.pack());
-
-	    UCLPackage ucl=new UCLPackage();
-	    ucl.setPropertySet(set0);
-	    ucl.setPropertySet(set1);
-	    ucl.setPropertySet(set2);
-	    ucl.setUCL();
+	    System.out.println("--------------propertySet--------------\n");
 	    printPackString(ucl.packPropertySets());
 
-//	    cout << ucl.getValue(0, 1) << endl;
-//	    map<int, UCLPropertySet> s = ucl.getPropertySets();
-//	    s[0].setHeadCategory(0x05);
-//	    cout << setbase(10) << s[0].getPropertyHead().getLPart();
-	    return ucl;
+	    System.out.println("\n##############测试打包##############\n\n");
+	    System.out.println("--------------UCLPackage-------------- \n");
+	    printPackString(ucl.pack());
+	    System.out.println("--------------显示UCL各部分关键信息--------------\n");
+	    //ucl.getUclCode().showCode();何伟亮负责
+	    ucl.showUCL();
+
+	    String ucl1 = ucl.pack();
+
+	    System.out.println("\n##############测试解包##############\n\n");
+	    UCLPackage ucl2=new UCLPackage();
+	    ucl2.unpack(ucl1);
+	    System.out.println("--------------UCLPackage--------------\n");
+	    printPackString(ucl2.pack());
+	    System.out.println("--------------解包后UCL各部分关键信息--------------\n");
+	    //ucl2.getUclCode().showCode();何伟亮负责
+	    ucl2.showUCL();
+
+	    System.out.println("========== UCL test end==========\n");
 	}
 	
 	public static void main(String[] args) {

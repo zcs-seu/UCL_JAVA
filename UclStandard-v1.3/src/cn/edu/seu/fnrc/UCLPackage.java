@@ -9,6 +9,7 @@ import cn.edu.seu.fnrc.code.UCLCodeExtention;
 import cn.edu.seu.fnrc.property.UCLPropertyBase;
 import cn.edu.seu.fnrc.property.UCLPropertyHead;
 import cn.edu.seu.fnrc.property.UCLPropertySet;
+import cn.edu.seu.utils.Encrypt;
 
 public class UCLPackage {
 	/**
@@ -17,7 +18,7 @@ public class UCLPackage {
 	* @author zhangcs
 	* @version 1.0
 	* @since 2016-12-05
-	* modified by zhangcs at 2016-12-24 
+	* modified by zhangcs at 2016-06-03 
 	*/
 	
 	
@@ -100,6 +101,50 @@ public class UCLPackage {
 		
 	}
 	
+	
+	//设置 删除属性
+	public boolean setProperty(int setPos, UCLPropertyBase property){
+	    propertySets.get(setPos).setProperty(property);
+	    setUCL();
+	    return true;
+	}
+
+	public boolean delProperty(int setPos, int propertyPos){
+	    if(propertySets.containsKey(setPos)){
+	    	propertySets.get(setPos).delProperty(propertyPos);
+	    	setUCL();
+	    	return true;
+	    }
+	    return false;
+	}
+
+	public UCLPropertyBase getProperty(int setPos, int propertyPos){
+	    if(propertySets.containsKey(setPos)){
+	    	return propertySets.get(setPos).getProperty(propertyPos);
+	    }
+	    return null;
+	}
+    
+    
+    //获取第setPos集合的第propertyPos属性的vPart
+	public String getValue(int setPos, int propertyPos){
+		if(propertySets.containsKey(setPos)){
+	    	return propertySets.get(setPos).getPropertyVPart(propertyPos);
+	    }
+	    return null;
+//	    map<int, UCLPropertyBase> properties = propertySets[setPos].getProperties();
+//	    assert(properties.find(propertyPos)!=properties.end());
+//	    return properties[propertyPos].getVPart();
+	}
+
+	public void setValue(int setPos, int propertyPos, String value){
+		if(propertySets.containsKey(setPos)){
+	    	propertySets.get(setPos).setPropertyVPart(propertyPos, value);
+	    	setUCL();
+	    } 
+	}
+	
+	
 	//设置uclPropertyHead类别-revised
     public void setHeadCategory(int category){
     	
@@ -157,16 +202,6 @@ public class UCLPackage {
 	   
    }
 
-    //获取第setPos集合的第propertyPos属性的vPart
-    public String getValue(int setPos, int propertyPos){
-    	
-    	assert(propertySets.get(setPos)!=null);
-    	Map<Integer, UCLPropertyBase> properties = propertySets.get(setPos).getProperties();
-    	assert(properties.get(propertyPos)!=null);
-    	return properties.get(propertyPos).getVPart();
-    	
-    }
-
     
     //属性头部打包
     public String packCode(){
@@ -181,22 +216,6 @@ public class UCLPackage {
     	
     }
     
-    
-    //ucl打包
-    public String pack(){
-    	
-    	String code=packCode();
-    	String property=packPropertySets();
-    	return code+property;
-    }
-    
-    //ucl解包
-    public void unpack(String uclpackage){
-    	String code=uclpackage.substring(0,32);
-    	String property=uclpackage.substring(32,uclpackage.length());
-    	unpackCode(code);
-    	unpackPropertySets(property);
-    }
     
     //属性集合打包解包
     public String packPropertySets(){
@@ -243,5 +262,114 @@ public class UCLPackage {
                 tmp += lValueNum;           
     		}
     	}
+    }
+    
+    
+    //UCL　Package打包
+    public String pack(){
+    	
+    	setValue(15, 15, "");//第一个15表示CGPS属性集合，第二个15表示数字签名
+
+        String temp = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
+        Map<Integer, UCLPropertyBase> ps = propertySets.get(15).getProperties();
+        //获得数字签名属性集合
+        UCLPropertyBase sigUCLP = ps.get(15);
+
+        int helper = sigUCLP.getHelper();
+        int alg = sigUCLP.getLPartHead(2, 5);
+        String uclSigTemp = generateSigUCLP(helper, alg, temp);
+
+        setValue(15, 15, uclSigTemp);
+
+        return packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
+    }
+    
+    //UCL　Package解包
+    public void unpack(String uclpackage){
+    	String code=uclpackage.substring(0,32);
+    	String property=uclpackage.substring(32,uclpackage.length());
+    	unpackCode(code);
+    	unpackPropertySets(property);
+    	assert(checkUCL());
+    }
+    
+    
+    //检验UCL包数字签名
+    public boolean checkUCL(){
+        Map<Integer, UCLPropertyBase> ps = propertySets.get(15).getProperties();
+        UCLPropertyBase sigUCLP = ps.get(15);
+
+        String uclSig = getValue(15, 15);
+        setValue(15, 15, "");
+        String temp = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
+
+        int helper = sigUCLP.getHelper();
+        int alg = sigUCLP.getLPartHead(2, 5);
+        String uclSigTemp = generateSigUCLP(helper, alg, temp);
+
+        if(uclSigTemp==uclSig){
+        	return true;
+        }else {
+        	return false; 
+        }
+    }
+    //打印UCL各部分
+    public void showUCL(){
+    	//uclCode.showCode();
+    	//uclCodeExtension.showCodeExt();
+    	System.out.println("The size of propertySet:"+uclPropertyHead.getSize());
+    	
+        for(int propsetID : propertySets.keySet())
+        {
+        	propertySets.get(propsetID).showPropertySet();
+        }
+    }
+    
+
+    public static String generateSigUCLP(int helper, int alg, String temp){
+        String uclSigTemp=null;
+
+        switch(alg)
+        {
+            case 1: //CRC32
+                uclSigTemp = Encrypt.encrypt(temp, "CRC32");
+                break;
+            case 2: //MD5
+                uclSigTemp = Encrypt.encrypt(temp, "MD5");
+                break;
+            case 3: //SHA-256
+                uclSigTemp = Encrypt.encrypt(temp, "SHA-256");
+                break;
+            case 4: //SHA-512
+                uclSigTemp = Encrypt.encrypt(temp, "SHA-512");
+                break;
+            default: break;
+        }
+        uclSigTemp = switchHelper(helper, uclSigTemp);
+
+        return uclSigTemp;
+    }
+    
+    
+    public static String switchHelper(int helper, String s){
+        switch(helper)
+        {
+            case 0:
+                break;
+            case 1:
+                //RSA
+                break;
+            case 2:
+                //ECDSA
+                break;
+            case 3:
+                //DSA
+                break;
+            case 4:
+                //ECC
+                break;
+            default: break;
+        }
+        return s;
     }
 }

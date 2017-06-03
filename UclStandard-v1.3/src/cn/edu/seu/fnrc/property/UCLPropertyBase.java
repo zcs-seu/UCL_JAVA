@@ -26,8 +26,7 @@ public class UCLPropertyBase {
 	protected long lPart;
 	//V:
 	protected String vPart;
-	//quickMatcherBytesNum,special to UCLPropertyHead to be more 
-	//convenient to setTotalLength and getTotalLength
+	//该数据成员专为UCLPropertyHead类设计,为了更好的setTotalLength,getTotalLength
 	int quickMatcherBytesNum;
 	
 	public UCLPropertyBase() {
@@ -66,7 +65,6 @@ public class UCLPropertyBase {
 		}else{
 			return false;
 		}
-		
 	}
 	
 	
@@ -222,6 +220,16 @@ public class UCLPropertyBase {
 		
 	}
 	
+	public byte getLPartHead(int begin,int end) {
+		int num=0;
+		for(int i=begin;i<=end;i++){
+			num+=Math.pow(2, i);
+		}
+		long tmp=lPart&num;
+		byte lPartHead=(byte) (tmp>>begin);
+		return lPartHead;
+	}
+	
 	public boolean setLPartHead(int start, int end, int head)
 	{
 	    assert(start>=0 && start <= 7 && end>=0 && end<=7 && start < end);
@@ -231,9 +239,10 @@ public class UCLPropertyBase {
 	    	cur*=2;
 	    }
 	    num <<= start;
+	    head<<=start;
 	    num=0x0FF-num;
 	    lPart &= num;
-	    lPart |= (head&0x0FF);
+	    lPart |= (head);
 	    return true;
 	}
 	
@@ -360,6 +369,7 @@ public class UCLPropertyBase {
 	public boolean setVPart(String vPart) {
 		
 		this.vPart = vPart;
+		setTotalLength();
 		return true;
 		
 	}
