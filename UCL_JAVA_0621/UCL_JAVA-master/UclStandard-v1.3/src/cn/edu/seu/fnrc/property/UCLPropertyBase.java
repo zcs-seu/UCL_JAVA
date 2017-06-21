@@ -445,10 +445,4 @@ public class UCLPropertyBase {
 	    vPart=String.valueOf(vPart_arr);
 		
 	}
-	public void setProperty(int category, int helper, String vPart) {
-		assert(helper < 16);
-		setCategory(category);
-		setHelper(helper);
-		setVPart(vPart);
-	}
 }

@@ -3,10 +3,11 @@ package test;
 import cn.edu.seu.fnrc.UCLPackage;
 import cn.edu.seu.fnrc.code.UCLCode;
 import cn.edu.seu.fnrc.code.UCLCodeExtention;
-import cn.edu.seu.fnrc.property.GenCDPSProperty;
-import cn.edu.seu.fnrc.property.GenCGPSProperty;
+import cn.edu.seu.fnrc.property.GenerateProperty;
 import cn.edu.seu.fnrc.property.UCLPropertyBase;
+import cn.edu.seu.fnrc.property.UCLPropertyHead;
 import cn.edu.seu.fnrc.property.UCLPropertySet;
+import cn.edu.seu.utils.ConvertCharSet;
 
 public class Test_Pack {
 
@@ -129,16 +130,16 @@ public class Test_Pack {
 		UCLPropertySet cdps = new UCLPropertySet();
 
 		cdps.setHeadCategory(1);
-		UCLPropertyBase title = GenCDPSProperty.genTitle("江苏今年起实施“12311”计划 培育百个农业特色镇",2);
-		UCLPropertyBase keywords = GenCDPSProperty.genKeywords(3, "江苏;乡村;国家",2);
-		UCLPropertyBase aabstract = GenCDPSProperty.genAbstract("省农委日前在金坛召开全省创意休闲农业工作推进会，决定从今年起实施“12311”创意休闲农业省级特色品牌培育计划",2);
-		UCLPropertyBase author = GenCDPSProperty.genAuthor(3, 2, "邹建丰:新华日报\\r张三;李四:新浪",2);
-		UCLPropertyBase entity = GenCDPSProperty.genEntity(31, "江苏省委\\r2017\\r金坛\\r培育计划\\r美丽;nice",2);
-		UCLPropertyBase tag = GenCDPSProperty.genTag(2, "美丽;乡村" ,2);
-		UCLPropertyBase copyright = GenCDPSProperty.genCopyright("新华日报",2);
-		UCLPropertyBase origin = GenCDPSProperty.genOriginality("皱建丰",2);
-		UCLPropertyBase file = GenCDPSProperty.genFileDescription("文本;10M",2);
-		UCLPropertyBase content = GenCDPSProperty.genContObject("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会",2);
+		UCLPropertyBase title = GenerateProperty.generateCDPSTitle("江苏今年起实施“12311”计划 培育百个农业特色镇",2);
+		UCLPropertyBase keywords = GenerateProperty.generateCDPSKeywords(3, "江苏;乡村;国家",2);
+		UCLPropertyBase aabstract = GenerateProperty.generateCDPSAbstract("省农委日前在金坛召开全省创意休闲农业工作推进会，决定从今年起实施“12311”创意休闲农业省级特色品牌培育计划",2);
+		UCLPropertyBase author = GenerateProperty.generateCDPSAuthor(3, 2, "邹建丰:新华日报\\r张三;李四:新浪",2);
+		UCLPropertyBase entity = GenerateProperty.generateCDPSEntity(31, "江苏省委\\r2017\\r金坛\\r培育计划\\r美丽;nice",2);
+		UCLPropertyBase tag = GenerateProperty.generateCDPSTag(2, "美丽;乡村" ,2);
+		UCLPropertyBase copyright = GenerateProperty.generateCDPSCopyright("新华日报",2);
+		UCLPropertyBase origin = GenerateProperty.generateCDPSOriginality("皱建丰",2);
+		UCLPropertyBase file = GenerateProperty.generateCDPSFileDescription("文本;10M",2);
+		UCLPropertyBase content = GenerateProperty.generateCDPSContentObject("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会",2);
 		cdps.setProperty(title);
 		cdps.setProperty(keywords);
 		cdps.setProperty(aabstract);
@@ -155,19 +156,19 @@ public class Test_Pack {
 
 		UCLPropertySet cgps=new UCLPropertySet();
 		cgps.setHeadCategory(15);
-		UCLPropertyBase pro = GenCGPSProperty.genProvenance(1, "http://jiangsu.sina.com.cn/news/b/2017-05-31/detail-ifyfqqyh9080015.shtml",2);
+		UCLPropertyBase pro = GenerateProperty.generateCGPSProvenance(1, "http://jiangsu.sina.com.cn/news/b/2017-05-31/detail-ifyfqqyh9080015.shtml",2);
 		cgps.setProperty(pro);
-		UCLPropertyBase contentid = GenCGPSProperty.genContId("sina",2);
+		UCLPropertyBase contentid = GenerateProperty.generateCGPSContentid("sina",2);
 		cgps.setProperty(contentid);
-		UCLPropertyBase prog = GenCGPSProperty.genPropagation(2, "baidu;sina",2);
+		UCLPropertyBase prog = GenerateProperty.generateCGPSPropagation(2, "baidu;sina",2);
 		cgps.setProperty(prog);
-		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 0);
+		UCLPropertyBase sigCon = GenerateProperty.generateCGPSSignatureContent("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 0);
 		cgps.setProperty(sigCon);
-		UCLPropertyBase security = GenCGPSProperty.genSecEL("重要",2);
+		UCLPropertyBase security = GenerateProperty.generateCGPSSecurity("重要",2);
 		cgps.setProperty(security);
-		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
+		UCLPropertyBase chain = GenerateProperty.generateCGPSChain(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 0);
+		UCLPropertyBase sigUCL = GenerateProperty.generateCGPSSignatureUCL(3, 0);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);
@@ -186,7 +187,7 @@ public class Test_Pack {
 		UCLPackage rUCL = generateRUCL();
 		rstr += rUCL.pack();
 
-		UCLPropertyBase related = GenCDPSProperty.genRelatedUCL(2, rstr, 1);
+		UCLPropertyBase related = GenerateProperty.generateCDPSRelatedUCL(2, rstr, 1);
 		ucl.setProperty(1, related);
 
 
@@ -238,18 +239,18 @@ public class Test_Pack {
 
 		UCLPropertySet cdps=new UCLPropertySet();
 		cdps.setHeadCategory(1);
-		UCLPropertyBase title = GenCDPSProperty.genTitle("江苏今年起实施“12311”计划 培育百个农业特色镇",2);
+		UCLPropertyBase title = GenerateProperty.generateCDPSTitle("江苏今年起实施“12311”计划 培育百个农业特色镇",2);
 		cdps.setProperty(title);
 
 		ucl.setPropertySet(cdps);
 
 		UCLPropertySet cgps=new UCLPropertySet();
 		cgps.setHeadCategory(15);
-		UCLPropertyBase pro = GenCGPSProperty.genProvenance(1, "http://jiangsu.sina.com.cn/news/b/2017-05-31/detail-ifyfqqyh9080015.shtml",2);
+		UCLPropertyBase pro = GenerateProperty.generateCGPSProvenance(1, "http://jiangsu.sina.com.cn/news/b/2017-05-31/detail-ifyfqqyh9080015.shtml",2);
 		cgps.setProperty(pro);
-		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
+		UCLPropertyBase chain = GenerateProperty.generateCGPSChain(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(1, 0);
+		UCLPropertyBase sigUCL = GenerateProperty.generateCGPSSignatureUCL(1, 0);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);
@@ -260,16 +261,17 @@ public class Test_Pack {
 		return ucl;
 	}
 
-	public static UCLPropertySet generatePersonalPropertySet() {
+	public static UCLPropertySet generatePersonalPropertySet()
+	{
 		UCLPropertySet personal=new UCLPropertySet();
 		personal.setHeadCategory(10);
 
 		UCLPropertyBase name=new UCLPropertyBase();
-		name.setProperty(1, 1, "曾朋");
+		GenerateProperty.setProperty(name, 1, 1, "曾朋");
 		personal.setProperty(name);
 
 		UCLPropertyBase school=new UCLPropertyBase();
-		school.setProperty(2, 1, "SEU");
+		GenerateProperty.setProperty(school, 2, 1, "SEU");
 		personal.setProperty(school);
 
 		return personal;

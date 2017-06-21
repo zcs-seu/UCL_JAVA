@@ -93,7 +93,6 @@ public class UCLPackage {
 	public boolean setPropertySet(UCLPropertySet propertySet){
 		
 		propertySets.put(propertySet.getHeadCategory(), propertySet);
-        setUCL();
 		return true;
 		
 	}
@@ -135,6 +134,9 @@ public class UCLPackage {
 	    	return propertySets.get(setPos).getPropertyVPart(propertyPos);
 	    }
 	    return null;
+//	    map<int, UCLPropertyBase> properties = propertySets[setPos].getProperties();
+//	    assert(properties.find(propertyPos)!=properties.end());
+//	    return properties[propertyPos].getVPart();
 	}
 
 	public void setValue(int setPos, int propertyPos, String value){
@@ -274,11 +276,8 @@ public class UCLPackage {
         UCLPropertyBase sigUCLP = ps.get(15);
 
         int helper = sigUCLP.getHelper();
-        int alg = sigUCLP.getLPartHead(2, 5);//alg摘要算法ID，temp为签名算法ID
-        //生成摘要
-        String hash = genHash(alg, temp);
-        //私钥加密摘要（数字签名）
-        String uclSigTemp = genSig(helper, hash);  //私钥加密摘要
+        int alg = sigUCLP.getLPartHead(2, 5);//alg摘要
+        String uclSigTemp = generateSigUCLP(helper, alg, temp);
 
         setValue(15, 15, uclSigTemp);
 
@@ -306,10 +305,9 @@ public class UCLPackage {
 
         int helper = sigUCLP.getHelper();
         int alg = sigUCLP.getLPartHead(2, 5);
-        String hashFromSig = genSig(helper, uclSig);  //公钥解密成Hash值
-        String hashFromTemp = genHash(alg, temp);  //比较Hash值
+        String uclSigTemp = generateSigUCLP(helper, alg, temp);
 
-        if(hashFromTemp==hashFromSig){
+        if(uclSigTemp==uclSig){
         	return true;
         }else {
         	return false; 
@@ -330,31 +328,33 @@ public class UCLPackage {
             propertySets.get(propsetID).showPropertySet();
         }
     }
+    
 
-
-    public static String genHash(int alg, String temp){
-        String hash=null;
+    public static String generateSigUCLP(int helper, int alg, String temp){
+        String uclSigTemp=null;
 
         switch(alg) {
             case 1: //CRC32
-                hash = Encrypt.encrypt(temp, "CRC32");
+                uclSigTemp = Encrypt.encrypt(temp, "CRC32");
                 break;
             case 2: //MD5
-                hash = Encrypt.encrypt(temp, "MD5");
+                uclSigTemp = Encrypt.encrypt(temp, "MD5");
                 break;
             case 3: //SHA-256
-                hash = Encrypt.encrypt(temp, "SHA-256");
+                uclSigTemp = Encrypt.encrypt(temp, "SHA-256");
                 break;
             case 4: //SHA-512
-                hash = Encrypt.encrypt(temp, "SHA-512");
+                uclSigTemp = Encrypt.encrypt(temp, "SHA-512");
                 break;
             default: break;
         }
-        return hash;
+        uclSigTemp = switchHelper(helper, uclSigTemp);
+
+        return uclSigTemp;
     }
     
     
-    public static String genSig(int helper, String s){
+    public static String switchHelper(int helper, String s){
         switch(helper)
         {
             case 1:
