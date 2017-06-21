@@ -62,7 +62,7 @@ public class GenCGPSProperty {
         return security;
     }
 
-    //chain of responsibility
+    //chain  of  responsibility
     public static UCLPropertyBase genChainOfRes(int count, String vPart, int helper) {
         assert(count >=1);
         if (count > 15) count = 16;
