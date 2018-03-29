@@ -1,13 +1,13 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.base;
 
-import cn.edu.seu.fnrc.UCLPackage;
+import ucl.UCLPackage;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UCLPropertySet {
 	/**
-	* <p>Class description: UCLPropertySet,UCL PropertySet base class</p>
+	* <p>Class description: UCLPropertySet,ucl PropertySet base class</p>
 	* <p>Copyright 2016: Future network research center, Southeast University</p>
 	* @author zhangcs
 	* @version 1.0

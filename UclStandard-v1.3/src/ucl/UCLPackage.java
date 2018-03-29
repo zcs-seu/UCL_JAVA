@@ -1,20 +1,20 @@
-package cn.edu.seu.fnrc;
+package ucl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.edu.seu.fnrc.code.UCLCode;
-import cn.edu.seu.fnrc.code.UCLCodeExtention;
-import cn.edu.seu.fnrc.property.UCLPropertiesInfo;
-import cn.edu.seu.fnrc.property.UCLPropertyBase;
-import cn.edu.seu.fnrc.property.UCLPropertyHead;
-import cn.edu.seu.fnrc.property.UCLPropertySet;
+import ucl.code.UCLCode;
+import ucl.property.base.UCLPropertyBase;
+import ucl.property.base.UCLPropertyHead;
+import ucl.property.base.UCLPropertySet;
+import ucl.code.UCLCodeExtention;
+import ucl.property.info.UCLPropertiesInfo;
 import cn.edu.seu.utils.Encrypt;
 import cn.edu.seu.utils.Sig_RSA_DSA_ECDSA;
 
 public class UCLPackage {
 	/**
-	* <p>Class description: UCL,UCL package class</p>
+	* <p>Class description: ucl,ucl package class</p>
 	* <p>Copyright 2016: Future network research center, Southeast University</p>
 	* @author zhangcs
 	* @version 1.0
@@ -263,7 +263,7 @@ public class UCLPackage {
     }
     
     
-    //UCL　Package打包
+    //ucl　Package打包
     public String pack(){
     	
     	setValue(15, 15, "hello");//第一个15表示CGPS属性集合，第二个15表示数字签名
@@ -285,7 +285,7 @@ public class UCLPackage {
         return packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
     }
     
-    //UCL　Package解包
+    //ucl　Package解包
     public void unpack(String uclpackage){
     	String code=uclpackage.substring(0,32);
     	String property=uclpackage.substring(32,uclpackage.length());

@@ -1,8 +1,8 @@
-package cn.edu.seu.fnrc.code;
+package ucl.code;
 
 public class UCLCodeExtention {
 	/**
-	 * <p>Class description: UCLCodeExtention,UCL CodeCodeExtention class</p>
+	 * <p>Class description: UCLCodeExtention,ucl CodeCodeExtention class</p>
 	 * <p>Copyright 2016: Future network research center, Southeast University</p>
 	 * @author heweiliang
 	 * @version 1.0

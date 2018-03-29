@@ -1,7 +1,8 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.info;
 
-import cn.edu.seu.fnrc.UCLPackage;
-import cn.edu.seu.fnrc.code.UCLCode;
+import ucl.UCLPackage;
+import ucl.code.UCLCode;
+import ucl.property.base.UCLPropertyBase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,17 +13,17 @@ import static test.Test_Pack.printPackString;
  * Created by seu on 2017/6/14.
  */
 public class UCLPropertiesInfo {
-    private Map<Integer, String> propertyHeadMap = new HashMap<>();
-    private Map<Integer, String> propertySetCategoryMap = new HashMap<>();
-    private Map<Integer, Map<Integer, String>> propertyCategoryMap = new HashMap<>();
+    public Map<Integer, String> propertyHeadMap = new HashMap<>();
+    public Map<Integer, String> propertySetCategoryMap = new HashMap<>();
+    public Map<Integer, Map<Integer, String>> propertyCategoryMap = new HashMap<>();
 
-    private Map<Integer, String> entity = new HashMap<>();
-    private Map<Integer, String> promap = new HashMap<>(); //provenance
-    private Map<Integer, String> contentIdRulemap = new HashMap<>();
-    private Map<Integer, String> seliMap = new HashMap<>();
+    public Map<Integer, String> entity = new HashMap<>();
+    public Map<Integer, String> promap = new HashMap<>(); //provenance
+    public Map<Integer, String> contentIdRulemap = new HashMap<>();
+    public Map<Integer, String> seliMap = new HashMap<>();
 
-    private Map<Integer, String> signatureMap = new HashMap<>();
-    private Map<Integer, String> hash = new HashMap<>();
+    public Map<Integer, String> signatureMap = new HashMap<>();
+    public Map<Integer, String> hash = new HashMap<>();
 
 
     public UCLPropertiesInfo() {
@@ -67,7 +68,7 @@ public class UCLPropertiesInfo {
         propertySetCategoryMap.put(15,"内容管理属性集合");
     }
 
-    String getPropertySetCategory(int type) {
+    public String getPropertySetCategory(int type) {
         if (!propertySetCategoryMap.containsKey(type))
             return "自定义集合";
         else
@@ -432,7 +433,7 @@ public class UCLPropertiesInfo {
         System.out.println(String.join(" ", keys));
     }
 
-    //CGPS, Signature of UCL Package
+    //CGPS, Signature of ucl Package
     void showCGPSSignatureUP(UCLPropertyBase sup){
         System.out.println("数字摘要算法:  "+hash.get((int)sup.getLPartHead(2, 5)));
         System.out.println("数字签名算法:  "+signatureMap.get(sup.getHelper()));

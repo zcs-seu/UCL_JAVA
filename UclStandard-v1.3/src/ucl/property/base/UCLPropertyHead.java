@@ -1,8 +1,8 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.base;
 
 public class UCLPropertyHead extends UCLPropertyBase {
 	/**
-	* <p>Class description: UCLPropertyHead,UCL PropertyHead base class</p>
+	* <p>Class description: UCLPropertyHead,ucl PropertyHead base class</p>
 	* <p>Copyright 2016: Future network research center, Southeast University</p>
 	* Note:暂定以UCL属性部分总头部实现该类
 	* @author zhangcs

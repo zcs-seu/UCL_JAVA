@@ -1,12 +1,12 @@
 package test;
 
-import cn.edu.seu.fnrc.UCLPackage;
-import cn.edu.seu.fnrc.code.UCLCode;
-import cn.edu.seu.fnrc.code.UCLCodeExtention;
-import cn.edu.seu.fnrc.property.GenCDPSProperty;
-import cn.edu.seu.fnrc.property.GenCGPSProperty;
-import cn.edu.seu.fnrc.property.UCLPropertyBase;
-import cn.edu.seu.fnrc.property.UCLPropertySet;
+import ucl.UCLPackage;
+import ucl.code.UCLCode;
+import ucl.code.UCLCodeExtention;
+import ucl.property.generate.GenCDPSProperty;
+import ucl.property.generate.GenCGPSProperty;
+import ucl.property.base.UCLPropertyBase;
+import ucl.property.base.UCLPropertySet;
 
 public class Test_Pack {
 
@@ -33,91 +33,15 @@ public class Test_Pack {
 		return true;
 	}
 
-
-	public static void setUclCode(UCLCode c){  //请何伟亮同学按照C++组代码将两处修改一致
-		byte version=1;
-		c.setVersion(version);
-		System.out.println(c.getVersion());
-
-		byte typeofmedia=9;
-		c.setTypeOfMedia(typeofmedia);
-		typeofmedia=c.getTypeOfMedia();
-		int temp=typeofmedia;
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		byte priority=0x1f;
-		c.setPriority(priority);
-		priority=c.getPriority();
-		temp=priority;
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		byte flag=0x01;
-		c.setFlag(flag);
-		int temp2=c.getFlag();
-		temp2&=0x000000ff;
-		System.out.println(Integer.toHexString(temp2));
-
-		byte[] parserule=new byte[2];
-		parserule[0]=(byte)(0xf0);
-		parserule[1]=0x01;
-		c.setParseRule(parserule);
-		parserule=c.getParseRule();
-		temp=0;
-		temp=parserule[0];
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		temp=parserule[1];
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		int sourceofcontent=0x0e9ffff;
-		c.setSourceOfContent(sourceofcontent);
-		temp=c.getSourceOfContent();
-		System.out.println(Integer.toHexString(temp));
-
-		byte category=(byte)(0xee);
-		c.setCategory(category);
-		temp=c.getCategory();
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		byte subcategory=(byte)(0xfe);
-		c.setSubcategory(subcategory);
-		temp=c.getSubcategory();
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		int topic=0x1230000;
-		c.setTopic(topic);
-		System.out.println(Integer.toHexString(c.getTopic()));
-
-		byte typeofcontent=(byte)(0xef);
-		c.setTypeOfContent(typeofcontent);
-		temp=0;
-		temp=c.getTypeOfContent();
-		temp&=0x000000ff;
-		System.out.println(Integer.toHexString(temp));
-
-		String codepackage=c.packcode();
-		c.unpackcode(codepackage);
-		temp=c.getCodeCheckSum();
-		temp&=0x0000ffff;
-		System.out.println(Integer.toHexString(temp));
-
-		c.setCrc16();
-		System.out.println(c.checkCrc16());
-	}
-
 	public static void testUCL() {
-		System.out.println("\n========== UCL test begin==========\n");
+		System.out.println("\n========== ucl test begin==========\n");
 		UCLPackage ucl=new UCLPackage();
 
 		//code
 		UCLCode code=new UCLCode();
-		setUclCode(code);
+		Test_Code testclass=new Test_Code();
+		testclass.set_codezc(code);
+		testclass.test_codezc();
 		UCLCodeExtention extention=new UCLCodeExtention();
 
 		ucl.setUclCode(code);
@@ -161,13 +85,13 @@ public class Test_Pack {
 		cgps.setProperty(contentid);
 		UCLPropertyBase prog = GenCGPSProperty.genPropagation(2, "baidu;sina",2);
 		cgps.setProperty(prog);
-		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 0);
+		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 1);
 		cgps.setProperty(sigCon);
 		UCLPropertyBase security = GenCGPSProperty.genSecEL("重要",2);
 		cgps.setProperty(security);
 		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 0);
+		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 1);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);
@@ -200,7 +124,7 @@ public class Test_Pack {
 		String cur=ucl.pack();
 		printPackString(ucl.pack());
 		System.out.println("--------------显示UCL各部分关键信息--------------\n");
-		//ucl.getUclCode().showCode();何伟亮负责
+		ucl.getUclCode().showCodezc();
 		ucl.showUCL();
 
 		String ucl1 = ucl.pack();
@@ -215,18 +139,20 @@ public class Test_Pack {
 		boolean b=checkSame(ucl.pack(),ucl2.pack());
 
 		System.out.println("--------------解包后UCL各部分关键信息--------------\n");
-		//ucl2.getUclCode().showCode();何伟亮负责
+		ucl2.getUclCode().showCodezc();
 		ucl2.showUCL();
 
-		System.out.println("========== UCL test end==========\n");
+		System.out.println("========== ucl test end==========\n");
 	}
 
 	public static UCLPackage generateRUCL() {//请何伟亮同学按照C++组代码将此处CODE部分代码修改一致
 		UCLPackage ucl=new UCLPackage();
 
 		UCLCode code_test=new UCLCode();
-
-		setUclCode(code_test);
+		
+		//setUclCode(code_test);
+		Test_Code testclass=new Test_Code();
+		testclass.set_codezc(code_test);
 
 		code_test.setTypeOfMedia((byte)9);
 		code_test.setPriority((byte) 15);
@@ -249,7 +175,7 @@ public class Test_Pack {
 		cgps.setProperty(pro);
 		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(1, 0);
+		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(1, 1);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);

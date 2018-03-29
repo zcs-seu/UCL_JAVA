@@ -1,6 +1,7 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.generate;
 
-import cn.edu.seu.fnrc.UCLPackage;
+import ucl.property.base.UCLPropertyBase;
+import ucl.UCLPackage;
 
 /**
  * Created by seu on 2017/6/21.
@@ -74,7 +75,7 @@ public class GenCGPSProperty {
         return chain;
     }
 
-    //signature of UCL package
+    //signature of ucl package
     public static UCLPropertyBase genUCLSig(int alg, int helper)//algÕªÒª£¬helperÇ©Ãû
     {
         assert(helper <= 5);

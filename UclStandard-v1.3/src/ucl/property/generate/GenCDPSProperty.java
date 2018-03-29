@@ -1,4 +1,6 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.generate;
+
+import ucl.property.base.UCLPropertyBase;
 
 /**
  * Created by seu on 2017/6/21.
@@ -121,10 +123,10 @@ public class GenCDPSProperty {
     /*
     第一子分量，长度头部字节，它的 0 ～ 7 位含义如下：
     第 0 ～ 2 位保留，含义暂未定义 ；
-    第 3 ～ 5 位，其值加 1 表示 UCL  的个数， 111 表示超过 7 个；
+    第 3 ～ 5 位，其值加 1 表示 ucl  的个数， 111 表示超过 7 个；
     第 6 ～ 7 位，其值加 1 表示长度值子分量所占字节数， 10、 11 为非法取值。
      */
-    //Related UCL
+    //Related ucl
     public static UCLPropertyBase genRelatedUCL(int count, String vPart, int helper){
         assert(count >=1);
         if (count > 7) count = 8;

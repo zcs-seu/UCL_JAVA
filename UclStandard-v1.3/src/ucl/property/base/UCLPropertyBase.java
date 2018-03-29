@@ -1,12 +1,12 @@
-package cn.edu.seu.fnrc.property;
+package ucl.property.base;
 
 import java.util.Arrays;
 
 public class UCLPropertyBase {
 	/**
-	* <p>Class description: UCLProperty,UCL Property base class</p>
+	* <p>Class description: UCLProperty,ucl Property base class</p>
 	* <p>Copyright 2016: Future network research center, Southeast University</p>
-	* Note:Implement the class according to the Head of ALL UCL Properties
+	* Note:Implement the class according to the Head of ALL ucl Properties
 	* @author zhangcs
 	* @version 1.0
 	* @since 2016-12-05
@@ -200,7 +200,7 @@ public class UCLPropertyBase {
 	 */
 	public int getLPartBytesNum(){
 		
-		return LPARTHEAD_BYTESNUM+getLPartValueBytesNum() + getQuickMatcherBytesNum();
+		return LPARTHEAD_BYTESNUM + getLPartValueBytesNum() + getQuickMatcherBytesNum();
 		
 	}
 	
