@@ -14,27 +14,37 @@ import cn.edu.seu.utils.Sig_RSA_DSA_ECDSA;
 
 public class UCLPackage {
 	/**
-	* <p>Class description: ucl,ucl package class</p>
-	* <p>Copyright 2016: Future network research center, Southeast University</p>
-	* @author zhangcs
-	* @version 1.0
-	* @since 2016-12-05
-	* modified by zhangcs at 2016-06-03 
-	*/
-	
-	
-	//private UCLCode uclCode;
-	//private UCLCodeExtention uclCodeExtention;
-	private UCLPropertyHead uclPropertyHead;
-	/**
-	 * modified by zhangcs at 2016-12-20 
+	 * modified by zhangcs at 2018-03-29
 	 */
-	//private UCLPropertySet[] uclPropertySets=new UCLPropertySet[16];
-	private Map<Integer,UCLPropertySet> propertySets=new HashMap<Integer, UCLPropertySet>();
+
 	private UCLCode uclCode;
 	private UCLCodeExtention uclCodeExtention;
+    private UCLPropertyHead uclPropertyHead;
+    private Map<Integer,UCLPropertySet> propertySets;
+
     public static UCLPropertiesInfo UPI = new UCLPropertiesInfo();
-	
+
+    public static int NO_SIG = 0;
+    public static int CRC32 = 1;
+    public static int MD5 = 2;
+    public static int SHA_256 = 3;
+    public static int SHA_512 = 4;
+    public static int RSA = 1;
+    public static int ECDSA = 2;
+    public static int DSA = 3;
+    public static int ECC = 4;
+    public static int HMAC = 5;
+    public static int CRC32_LEN = 4;
+    public static int MD5_LEN = 32;
+    public static int SHA_256_LEN = 32;
+    public static int SHA_512_LEN = 64;
+
+    public static int RSA_LEN = 128;
+    public static int ECDSA_LEN = 32;
+    public static int DSA_LEN = 128;
+    public static int ECC_LEN = 20;
+    public static int HMAC_MD5 = 16;
+    public static int HMAC_SHA1 = 20;
 	
 	//构造函数
 	public UCLPackage() {
@@ -42,12 +52,14 @@ public class UCLPackage {
 		uclCode=new UCLCode();
 		uclCodeExtention=new UCLCodeExtention();
 		uclPropertyHead = new UCLPropertyHead();
+        propertySets=new HashMap<>();
 		uclPropertyHead.setCategory(0x01); //language：中文
 		uclPropertyHead.setTotalLength();
 	}
-	
-	
-	
+
+    /**
+     * UCLCode
+     */
 	public UCLCode getUclCode() {
 		return uclCode;
 	}
@@ -61,47 +73,38 @@ public class UCLPackage {
 	public void setUclCodeExtention(UCLCodeExtention uclCodeExtention) {
 		this.uclCodeExtention = uclCodeExtention;
 	}
-	
-	
-	//uclPropertyHead-revised
+
+    /**
+     * property
+     */
+    //uclPropertyHead
+    void updatePropertyLength();
 	public UCLPropertyHead getUclPropertyHead() {
-		
 		return uclPropertyHead;
-		
 	}
 	public void setUclPropertyHead(UCLPropertyHead uclPropertyHead) {
-		
 		this.uclPropertyHead = uclPropertyHead;
-		
 	}
-	
-	
-	//propertySets-revised
+
+
+    //propertySets
     public Map<Integer, UCLPropertySet> getPropertySets(){
-    	
     	return propertySets;
-    	
     }
     public void setPropertySets(Map<Integer, UCLPropertySet> propertySets){
-    	
     	this.propertySets=propertySets;
-    	
     }
 	
 	
-	//设置、删除属性集合-revised
+	//设置、删除属性集合
 	public boolean setPropertySet(UCLPropertySet propertySet){
-		
 		propertySets.put(propertySet.getHeadCategory(), propertySet);
         setUCL();
 		return true;
-		
 	}
 	public boolean delPropertySet(int category){
-		
 		propertySets.remove(category);
 		return true;
-		
 	}
 	
 	
@@ -137,52 +140,104 @@ public class UCLPackage {
 	    return null;
 	}
 
+    //设置第setPos集合的第propertyPos属性的vPart
 	public void setValue(int setPos, int propertyPos, String value){
 		if(propertySets.containsKey(setPos)){
 	    	propertySets.get(setPos).setPropertyVPart(propertyPos, value);
 	    	setUCL();
 	    } 
 	}
-	
-	
-	//设置uclPropertyHead类别-revised
-    public void setHeadCategory(int category){
-    	
-    	uclPropertyHead.setCategory(category);
-    	
-    }
-    public int getHeadCategory(){
-    	
-    	return uclPropertyHead.getCategory();
-    	
-    }
-    
-    //设置uclPropertyHead helper-revised
-    public void setHeadHelper(int helper){
-    	
-    	uclPropertyHead.setHelper(helper);
-    	
-    }
-    public int getHeadHelper(){
-    	
-    	return uclPropertyHead.getHelper();
-    	
+
+    //判断数字签名类型
+    public void initSignature(int helper,int alg) {
+        int signType = helper;//propertySets[15].getProperty(15).getHelper();
+        int abstractType = alg;//propertySets[15].getProperty(15).getLPartHead(2,5);
+        if(signType == 0x00) {
+            //未使用签名需要使用摘要填充
+            if(abstractType == CRC32) {
+                String str ="";
+                for(int i=0;i<CRC32_LEN;i++) {
+                    str+='0';
+                }
+                setValue(15, 15, str);
+            } else if(abstractType == MD5) {
+                String str ="";
+                for(int i=0;i<MD5_LEN;i++) {
+                    str+='0';
+                }
+                setValue(15, 15, str);
+            } else if(abstractType == SHA_256) {
+                String str ="";
+                for(int i=0;i<SHA_256_LEN;i++) {
+                    str+='0';
+                }
+                setValue(15, 15, str);
+            } else if(abstractType == SHA_512) {
+                String str ="";
+                for(int i=0;i<SHA_512_LEN;i++) {
+                    str+='0';
+                }
+                setValue(15, 15, str);
+            }
+        } else if(signType == RSA) {
+            String str ="";
+            for(int i=0;i<RSA_LEN;i++) {
+                str+='0';
+            }
+            setValue(15, 15, str);
+        } else if(signType == ECDSA) {
+            String str ="";
+            for(int i=0;i<ECDSA_LEN;i++) {
+                str+='0';
+            }
+            setValue(15, 15, str);
+        }
+        else if(signType == DSA) {
+            String str ="";
+            for(int i=0;i<DSA_LEN;i++) {
+                str+='0';
+            }
+            setValue(15, 15, str);
+        }
+        else if(signType == ECC) {
+            String str ="";
+            for(int i=0;i<ECC_LEN;i++) {
+                str+='0';
+            }
+            setValue(15, 15, str);
+        } else if(signType == HMAC) {
+            //HMAC
+        }
     }
 
-    //根据propertySets生成uclPropertyHead的快速匹配-self
+
+    //设置uclPropertyHead类别
+    public void setHeadCategory(int category){
+    	uclPropertyHead.setCategory(category);
+    }
+    public int getHeadCategory(){
+    	return uclPropertyHead.getCategory();
+    }
+    
+    //设置uclPropertyHead helper
+    public void setHeadHelper(int helper){
+    	uclPropertyHead.setHelper(helper);
+    }
+    public int getHeadHelper(){
+    	return uclPropertyHead.getHelper();
+    }
+
+    //根据propertySets生成uclPropertyHead的快速匹配
     public int generateQuickMatcher(){
-    	
     	int quickmatcher=0x0;
     	for(int i:propertySets.keySet()){
     		quickmatcher |= (0x01<<i);
     	}
     	return quickmatcher;
-    	
     }
     
     //根据propertySets生成uclPropertyHead的vPart
     public String generateHeadVPart(){
-    	
     	StringBuilder value=new StringBuilder();
     	int qm = uclPropertyHead.getQuickMatcher();
     	for(int i=0;i<16;i++){
@@ -191,6 +246,17 @@ public class UCLPackage {
     		}
     	}
     	return value.toString();
+    }
+
+    //设置UCL总长度（code和property）
+    public boolean setUCLTotalLength(){
+        long totalLength = getUCLTotalLength();
+        //根据totalLength设置code部分内容长度
+        uclCode.setSizeOfContent(totalLength);
+    }
+    //得到UCL总长度
+    public long getUCLTotalLength(){
+        return uclPropertyHead.getTotalLength() + 32;
     }
 
     //设置propertySets后必须调用的函数
@@ -203,26 +269,19 @@ public class UCLPackage {
     
     //属性头部打包
     public String packCode(){
-    	
     	return uclCode.packcode();
-    	
     }
     //属性头部解包
     public void unpackCode(String codepackage){
-    	
     	uclCode.unpackcode(codepackage);
-    	
     }
     
     
     //属性集合打包解包
     public String packPropertySets(){
-    	
     	return uclPropertyHead.pack();
-    	
     }
     public void unpackPropertySets(String properties){
-    	
     	uclPropertyHead.unpack(properties);
     	String headVPart = uclPropertyHead.getVPart();
     	int qm = uclPropertyHead.getQuickMatcher();
@@ -234,11 +293,9 @@ public class UCLPackage {
                 //取出长度值字段
                 char[] lValue = headVPart.substring(2+tmp, 2+tmp+lValueBytes).toCharArray();
                 int lValueNum = 0;
-                for(int j=0; j < lValue.length; j++)
-                {
+                for(int j=0; j < lValue.length; j++) {
                 	int cur = lValue[j] & 0x0FF;
-                    switch (j)
-                    {
+                    switch (j) {
                         case 0:
                             lValueNum = (0x0ffffff00 & lValueNum) | cur;
                             break;
@@ -265,21 +322,28 @@ public class UCLPackage {
     
     //ucl　Package打包
     public String pack(){
-    	
-    	setValue(15, 15, "hello");//第一个15表示CGPS属性集合，第二个15表示数字签名
-
-        String temp = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
         Map<Integer, UCLPropertyBase> ps = propertySets.get(15).getProperties();
         //获得数字签名属性集合
         UCLPropertyBase sigUCLP = ps.get(15);
 
         int helper = sigUCLP.getHelper();
         int alg = sigUCLP.getLPartHead(2, 5);//alg摘要算法ID，temp为签名算法ID
+
+        //根据对应签名长度，先填充对应位数，计算长度后填充签名
+        //内容数字签名，类别号12，全UCL包数字签名，类别号15
+        initSignature(helper,alg);
+        //设定UCL总长度
+        setUCLTotalLength();
+
+        setValue(15, 15, "hello");//第一个15表示CGPS属性集合，第二个15表示数字签名,"hello"随意写的因为后面会覆盖
+        String temp = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
+
+
         //生成摘要
         String hash = genHash(alg, temp);
         //私钥加密摘要（数字签名）
         String uclSigTemp = genSig(helper, hash);  //私钥加密摘要
-
+        //写入签名
         setValue(15, 15, uclSigTemp);
 
         return packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
@@ -302,17 +366,17 @@ public class UCLPackage {
 
         String uclSig = getValue(15, 15);
         setValue(15, 15, "");
-        String temp = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
+        String originUCL = packCode() /*+ uclCodeExtension.pack()*/ + packPropertySets();
 
         int helper = sigUCLP.getHelper();
         int alg = sigUCLP.getLPartHead(2, 5);
-        String hashFromSig = genSig(helper, uclSig);  //公钥解密成Hash值
-        String hashFromTemp = genHash(alg, temp);  //比较Hash值
 
+        String hashFromSig = genSig(helper, uclSig);  //公钥解密成Hash值
+        String hashFromTemp = genHash(alg, originUCL);  //比较Hash值
         if(hashFromTemp==hashFromSig){
-        	return true;
+            return true;
         }else {
-        	return false; 
+            return false;
         }
     }
     //打印UCL各部分
@@ -332,21 +396,21 @@ public class UCLPackage {
     }
 
 
-    public static String genHash(int alg, String temp){
+    public static String genHash(int alg, String originUCL){
         String hash=null;
 
         switch(alg) {
             case 1: //CRC32
-                hash = Encrypt.encrypt(temp, "CRC32");
+                hash = Encrypt.encrypt(originUCL, "CRC32");
                 break;
             case 2: //MD5
-                hash = Encrypt.encrypt(temp, "MD5");
+                hash = Encrypt.encrypt(originUCL, "MD5");
                 break;
             case 3: //SHA-256
-                hash = Encrypt.encrypt(temp, "SHA-256");
+                hash = Encrypt.encrypt(originUCL, "SHA-256");
                 break;
             case 4: //SHA-512
-                hash = Encrypt.encrypt(temp, "SHA-512");
+                hash = Encrypt.encrypt(originUCL, "SHA-512");
                 break;
             default: break;
         }
@@ -355,8 +419,7 @@ public class UCLPackage {
     
     
     public static String genSig(int helper, String s){
-        switch(helper)
-        {
+        switch(helper) {
             case 1:
                 //RSA
                 return Sig_RSA_DSA_ECDSA.get_sig(1,s);

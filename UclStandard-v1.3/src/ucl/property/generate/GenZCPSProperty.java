@@ -63,7 +63,7 @@ public class GenZCPSProperty {
     *第一部分几何轮廓，根据受控映射表进行取值；
     *第二部分投影边界，空间位置坐标集合。
     */
-    static UCLPropertyBase genShape(String vPart, int helper){
+    public static UCLPropertyBase genShape(String vPart, int helper){
         UCLPropertyBase shape = new UCLPropertyBase();
         shape.setProperty(0x4, helper, vPart);
 
