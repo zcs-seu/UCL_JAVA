@@ -1,12 +1,12 @@
 package test;
 
-import cn.edu.seu.fnrc.UCLPackage;
-import cn.edu.seu.fnrc.code.UCLCode;
-import cn.edu.seu.fnrc.code.UCLCodeExtention;
-import cn.edu.seu.fnrc.property.GenCDPSProperty;
-import cn.edu.seu.fnrc.property.GenCGPSProperty;
-import cn.edu.seu.fnrc.property.UCLPropertyBase;
-import cn.edu.seu.fnrc.property.UCLPropertySet;
+import ucl.UCLPackage;
+import ucl.code.UCLCode;
+import ucl.code.UCLCodeExtention;
+import ucl.property.generate.GenCDPSProperty;
+import ucl.property.generate.GenCGPSProperty;
+import ucl.property.base.UCLPropertyBase;
+import ucl.property.base.UCLPropertySet;
 
 public class Test_Pack {
 
@@ -112,7 +112,7 @@ public class Test_Pack {
 	}
 
 	public static void testUCL() {
-		System.out.println("\n========== UCL test begin==========\n");
+		System.out.println("\n========== ucl test begin==========\n");
 		UCLPackage ucl=new UCLPackage();
 
 		//code
@@ -161,13 +161,13 @@ public class Test_Pack {
 		cgps.setProperty(contentid);
 		UCLPropertyBase prog = GenCGPSProperty.genPropagation(2, "baidu;sina",2);
 		cgps.setProperty(prog);
-		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 0);
+		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("江苏今年起实施“12311”计划, 全省创意休闲农业工作推进会", 2, 1);
 		cgps.setProperty(sigCon);
 		UCLPropertyBase security = GenCGPSProperty.genSecEL("重要",2);
 		cgps.setProperty(security);
 		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 0);
+		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 1);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);
@@ -218,7 +218,7 @@ public class Test_Pack {
 		//ucl2.getUclCode().showCode();何伟亮负责
 		ucl2.showUCL();
 
-		System.out.println("========== UCL test end==========\n");
+		System.out.println("========== ucl test end==========\n");
 	}
 
 	public static UCLPackage generateRUCL() {//请何伟亮同学按照C++组代码将此处CODE部分代码修改一致
@@ -249,7 +249,7 @@ public class Test_Pack {
 		cgps.setProperty(pro);
 		UCLPropertyBase chain = GenCGPSProperty.genChainOfRes(2, "sian;seu",2);
 		cgps.setProperty(chain);
-		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(1, 0);
+		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(1, 1);
 		cgps.setProperty(sigUCL);
 
 		ucl.setPropertySet(cgps);

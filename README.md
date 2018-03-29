@@ -108,7 +108,7 @@ ucl2.unpack(ucl1);
 
 #### main()函数运行输出如下。
 ```
-========== UCL Code test begin==========
+========== ucl Code test begin==========
 new a UCLCode:
                         Version:0
                   Type of Media:0
@@ -171,9 +171,9 @@ UCLCode:
                   Serial Number:97
                 Multiplex Bytes:107070873493857
                      Code Check:24929
-========== UCL Code test end  ==========
+========== ucl Code test end  ==========
 
-========== UCL test begin==========
+========== ucl test begin==========
 
 ##############测试属性##############
 
@@ -276,7 +276,7 @@ The category and value of property: c   76f9b91be700e0d18a0cc5ce8ea6de96e8e744f8
 The category and value of property: d   重要
 The category and value of property: e   sian;seu
 The category and value of property: f   69918c3b12cd7dbb569be48a2cdc6293be2a4feb7441a965a509735880d67c7b
-========== UCL test end==========
+========== ucl test end==========
 
 Process finished with exit code 0
 ```
