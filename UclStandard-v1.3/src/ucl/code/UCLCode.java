@@ -1,5 +1,6 @@
 package ucl.code;
 import cn.edu.seu.utils.CRC16;
+import java.io.*;
 public class UCLCode {
 	/**
 	 * <p>Class description: UCLCode,ucl Code class</p>
@@ -40,7 +41,7 @@ public class UCLCode {
 	/**
 	 * get the type of media
 	 * @param
-	 * @return the type of media 
+	 * @return the type of media
 	 * @author heweiliang
 	 * @since 2016-12-13
 	 * modified by *** ****-**-** ***************
@@ -51,7 +52,7 @@ public class UCLCode {
 
 	/**
 	 * set the type of media
-	 * @param the type of media
+	 * the type of media
 	 * @return
 	 * @author heweiliang
 	 * @since 2016-12-13
@@ -76,7 +77,7 @@ public class UCLCode {
 
 	/**
 	 * set the priority
-	 * @param the priority
+	 * @param priority
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-01
@@ -100,7 +101,7 @@ public class UCLCode {
 
 	/**
 	 * set the first part of priority
-	 * @param first part of priority
+	 * first part of priority
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-01
@@ -130,7 +131,7 @@ public class UCLCode {
 
 	/**
 	 * set the second part of priority
-	 * @param second part of priority
+	 * second part of priority
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-01
@@ -161,7 +162,7 @@ public class UCLCode {
 
 	/**
 	 * set the third part of priority
-	 * @param third part of priority
+	 * third part of priority
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-01
@@ -188,7 +189,7 @@ public class UCLCode {
 
 	/**
 	 * set the flag
-	 * @param  the flag
+	 * the flag
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -200,7 +201,7 @@ public class UCLCode {
 
 	/**
 	 * set first flag
-	 * @param  the first flag
+	 * the first flag
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -227,7 +228,7 @@ public class UCLCode {
 
 	/**
 	 * set second flag
-	 * @param  the second flag
+	 * the second flag
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -257,7 +258,7 @@ public class UCLCode {
 
 	/**
 	 * set Third flag
-	 * @param  the Third flag
+	 * the Third flag
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -303,7 +304,7 @@ public class UCLCode {
 
 	/**
 	 * set the parserule
-	 * @param  the parserule
+	 * the parserule
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -333,7 +334,7 @@ public class UCLCode {
 
 	/**
 	 * set the first part of parse rule
-	 * @param  first part of parse rule
+	 * first part of parse rule
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-11-16
@@ -366,7 +367,7 @@ public class UCLCode {
 
 	/**
 	 * set the second part of parse rule
-	 * @param  second part of parse rule
+	 * second part of parse rule
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -409,7 +410,7 @@ public class UCLCode {
 
 	/**
 	 * set the source of content
-	 * @param  source of content
+	 * source of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-13
@@ -441,7 +442,7 @@ public class UCLCode {
 
 	/**
 	 * set first part source of content
-	 * @param  first part source of content
+	 * first part source of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2016-12-19
@@ -475,7 +476,7 @@ public class UCLCode {
 
 	/**
 	 * set Second part source of content
-	 * @param  Second part source of content
+	 * Second part source of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -609,7 +610,7 @@ public class UCLCode {
 
 	/**
 	 * set first part of topic
-	 * @param  first part of topic
+	 * first part of topic
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-11-19
@@ -644,7 +645,7 @@ public class UCLCode {
 
 	/**
 	 * set second part of topic
-	 * @param  second part of topic
+	 * second part of topic
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -674,7 +675,7 @@ public class UCLCode {
 
 	/**
 	 * set  type of content
-	 * @param  type of content
+	 * type of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -700,7 +701,7 @@ public class UCLCode {
 
 	/**
 	 * set  first part type of content
-	 * @param  first part type of content
+	 * first part type of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -728,7 +729,7 @@ public class UCLCode {
 
 	/**
 	 * set  second part type of content
-	 * @param  second part type of content
+	 * second part type of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -758,7 +759,7 @@ public class UCLCode {
 
 	/**
 	 * set security energy level code
-	 * @param  security energy level code
+	 * security energy level code
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -795,15 +796,63 @@ public class UCLCode {
 	}
 
 
+	int  getLengthRange(long  sizeOfContent)
+	{
+		if(sizeOfContent<4)
+			return 0;
+		else if(sizeOfContent>=4 && sizeOfContent<16)
+			return 1;
+		else if(sizeOfContent>=16 && sizeOfContent<64)
+			return 2;
+		else if(sizeOfContent>=64 && sizeOfContent<128)
+			return 3;
+		else if(sizeOfContent>=128 && sizeOfContent<256)
+			return 4;
+		else if(sizeOfContent>=256 && sizeOfContent<512)
+			return 5;
+		else if(sizeOfContent>=512 && sizeOfContent<768)
+			return 6;
+		else //(sizeOfContent>=768 && sizeOfContent<1024)
+			return 7;
+	}
 	/**
 	 * set size of content
-	 * @param size of content
+	 * size of content
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
 	 * modified by *** ****-**-** ***************
 	 */
-	public final void setSizeOfContent(byte sizeofcontent){
+	public final void setSizeOfContent(long   sizeOfContent){
+		int lengthRange=0;
+		int maxLengthUnit=0;
+		if(sizeOfContent<1024)
+		{
+			//B
+			lengthRange = getLengthRange(sizeOfContent);
+			maxLengthUnit=0;
+		}
+		else if(sizeOfContent>=1024 && (sizeOfContent/1024)<1024)
+		{
+			//KB
+			lengthRange = getLengthRange(sizeOfContent/1024);
+			maxLengthUnit = 1;
+		}
+		else if((sizeOfContent/1024)>=1024 && (sizeOfContent/1024/1024)<1024)
+		{
+			//MB
+			lengthRange = getLengthRange(sizeOfContent/1024/1024);
+			maxLengthUnit = 2;
+		}
+		else if((sizeOfContent/1024/1024)>=1024 && (sizeOfContent/1024/1024/1024)<1024)
+		{
+			//GB
+			lengthRange = getLengthRange(sizeOfContent/1024/1024/1024);
+			maxLengthUnit = 3;
+		}
+		byte sizeofcontent=0;
+		sizeofcontent|=(0x07&lengthRange);
+		sizeofcontent|=(maxLengthUnit<<3);
 		uclCode[17]&=0xe0;
 		sizeofcontent&=0x1f;
 		uclCode[17]|=sizeofcontent;
@@ -825,7 +874,7 @@ public class UCLCode {
 
 	/**
 	 * get time stamp
-	 * @param  time stamp
+	 * time stamp
 	 * @return
 	 * @author heweiliang
 	 * @since 2017-06-11
@@ -883,7 +932,7 @@ public class UCLCode {
 
 	/**
 	 * set time stamp
-	 * @param  time stamp
+	 * time stamp
 	 * @return
 	 * @author heweiliang
 	 * @since 2016-12-19
@@ -1012,7 +1061,7 @@ public class UCLCode {
 
 	/**
 	 * set reversed bytes
-	 * @param  reversed bytes
+	 * reversed bytes
 	 * @return
 	 * @author heweiliang
 	 * @since 2016-12-13
@@ -1119,7 +1168,7 @@ public class UCLCode {
 
 	/**
 	 * unpackage code
-	 * @param  string
+	 * string
 	 * @return
 	 * @author heweiliang
 	 * @since 2016-12-26
@@ -1237,5 +1286,197 @@ public class UCLCode {
 		System.out.println(Integer.toHexString(temp));
 
 
+	}
+	public final void showCodezc()
+	{
+
+		System.out.print("Version:");
+		int version=this.getVersion();
+		if (version==1)
+			System.out.println("Version-1");
+		else if (version==2)
+			System.out.println("Version-2");
+		else if(version==3)
+			System.out.println("Version-3");
+
+
+		System.out.print("Type of Media:");
+		byte typeofmedia;
+		typeofmedia=this.getTypeOfMedia();
+		int temp=typeofmedia;
+		temp&=0x000000ff;
+		if(temp==0)
+			System.out.println("ZC Target Object Encode");
+		else if(temp==8)
+			System.out.println("News And Information Portals");
+		else if(temp==2)
+			System.out.println("Search Engine");
+
+
+
+		System.out.print("Priority:");
+		byte priority;
+		priority=this.getPriority();
+		temp=priority;
+		temp&=0x000000ff;
+		//System.out.println(Integer.toHexString(temp));
+		System.out.println(temp);
+
+
+
+		System.out.print("Flag:");
+		temp=this.getFirstFlag();
+		temp&=0x000000ff;
+		if(temp==0)
+			System.out.println("Code Part Does Not Extend");
+		else if(temp==1)
+			System.out.println("Code Part Extends");
+
+
+
+		/*
+		System.out.print("Parse Rule:");
+		byte[] parserule=new byte[2];
+		parserule=this.getParseRule();
+		temp=0;
+		temp=parserule[0];
+		temp&=0x000000ff;
+		System.out.print(Integer.toHexString(temp)+"\t");
+		temp=parserule[1];
+		temp&=0x000000ff;
+		System.out.println(Integer.toHexString(temp));
+		*/
+
+
+		System.out.print("Source of Content:");
+		temp=this.getFirstPartSourceOfContent();
+		temp&=0x000000ff;
+		if(temp==1)
+			System.out.println("URL");
+		else if(temp==2)
+			System.out.println("Organization Name");
+		else if(temp==3)
+			System.out.println("Application-ZC");
+
+
+
+		System.out.print("Category:");
+		temp=this.getCategory();
+		temp&=0x000000ff;
+		if(temp==1)
+			System.out.println("Command Center");
+		else if(temp==2)
+			System.out.println("Driverless Cars");
+		else if(temp==3)
+			System.out.println("Unmanned Aerial Drones");
+		else if(temp==4)
+			System.out.println("Commander");
+
+
+		System.out.print("Subcategory:");
+		temp=this.getSubcategory();
+		temp&=0x000000ff;
+		if(temp==1)
+			System.out.println("Squad");
+		else if(temp==2)
+			System.out.println("Platoon");
+		else if(temp==3)
+			System.out.println("Company");
+		else if(temp==4)
+			System.out.println("Battalion");
+		else if(temp==5)
+			System.out.println("Regimental");
+		else if(temp==6)
+			System.out.println("Troops");
+		else if(temp==7)
+			System.out.println("Division");
+		else if(temp==8)
+			System.out.println("Corps");
+
+
+
+
+		System.out.print("Topic:");
+		temp=this.getFirstPartOfTopic();
+		temp&=0x000000ff;
+		if(temp==0)
+			System.out.println("Common Topic");
+		else if(temp==1)
+			System.out.println("Small Minority Topic");
+
+		temp=this.getSecondPartOfTopic();
+		if(temp==256)
+			System.out.println("Subordinate Report to Superior");
+		else if(temp==272)
+			System.out.println("Command To Subordinate From Superior");
+		else if(temp==288)
+			System.out.println("Information Collection");
+
+
+
+		System.out.print("Copyright and Type of Cont:");
+		temp=0;
+		temp=this.getFirstTypeOfContent();
+		temp&=0x000000ff;
+		if((temp&0x01)==0)
+			System.out.println("Do Not Have Copyright Information");
+		else
+			System.out.println("Have Copyright Information");
+		if((temp&0x02)==0)
+			System.out.println("Transmit Command");
+		else
+			System.out.println("Direct Command");
+		if((temp&0x04)==0)
+			System.out.println("Free Content");
+		else
+			System.out.println("Rechargeable Content");
+
+		temp=0;
+		temp=this.getSecondTypeOfContent();
+		temp&=0x000000ff;
+		if(temp==1)
+			System.out.println("Text");
+		else if(temp==2)
+			System.out.println("Image");
+		else if(temp==3)
+			System.out.println("Audio");
+		else if(temp==4)
+			System.out.println("Video");
+		else if(temp==5)
+			System.out.println("Multimedia Message");
+		else if(temp==6)
+			System.out.println("Application Program");
+		else if(temp==7)
+			System.out.println("Composite Type");
+
+
+
+		/*
+		System.out.print("Security Energy Level Code:");
+		temp=0;
+		temp=this.getSecEnerLevCode();
+		temp&=0x000000ff;
+		System.out.println(Integer.toHexString(temp));
+		*/
+
+
+		System.out.print("Language:");
+		temp=0;
+		temp=this.getLanguage();
+		temp&=0x000000ff;
+		if(temp==8)
+			System.out.println("Chinese");
+		else if(temp==9)
+			System.out.println("Mongol");
+		else if(temp==10)
+			System.out.println("Tibetan");
+		else if(temp==11)
+			System.out.println("Uyghur");
+		else if(temp==12)
+			System.out.println("Kazakh");
+		else if(temp==13)
+			System.out.println("Korean");
+		else if(temp==14)
+			System.out.println("Kyrgyz");
 	}
 }

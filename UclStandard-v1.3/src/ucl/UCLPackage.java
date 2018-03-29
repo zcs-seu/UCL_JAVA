@@ -78,7 +78,6 @@ public class UCLPackage {
      * property
      */
     //uclPropertyHead
-    void updatePropertyLength();
 	public UCLPropertyHead getUclPropertyHead() {
 		return uclPropertyHead;
 	}
@@ -253,6 +252,7 @@ public class UCLPackage {
         long totalLength = getUCLTotalLength();
         //根据totalLength设置code部分内容长度
         uclCode.setSizeOfContent(totalLength);
+        return true;
     }
     //得到UCL总长度
     public long getUCLTotalLength(){
@@ -355,7 +355,7 @@ public class UCLPackage {
     	String property=uclpackage.substring(32,uclpackage.length());
     	unpackCode(code);
     	unpackPropertySets(property);
-    	assert(checkUCL());
+    	assert (checkUCL());
     }
     
     

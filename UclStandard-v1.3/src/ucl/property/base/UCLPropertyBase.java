@@ -200,7 +200,7 @@ public class UCLPropertyBase {
 	 */
 	public int getLPartBytesNum(){
 		
-		return LPARTHEAD_BYTESNUM + getLPartValueBytesNum() + getQuickMatcherBytesNum();
+		return LPARTHEAD_BYTESNUM+getLPartValueBytesNum() + getQuickMatcherBytesNum();
 		
 	}
 	
@@ -383,9 +383,9 @@ public class UCLPropertyBase {
 	 * modified by zhangcs,2016-12-20,Keep consistent with ucl_cpp
 	 */
 	public long getVPartBytesNum(){
-		
+
 		return vPart.toCharArray().length;
-		
+
 	}
 	
 	
@@ -413,32 +413,32 @@ public class UCLPropertyBase {
 	    //lPart
 	    lPart = (lPart & 0xFFFFFFFFFFFFFF00L) | (property_array[1] & 0x0FF);
 	    int  lPartValueBytesNum = getLPartValueBytesNum();
-	    long quickMatcher = 0;
-	    int cur0=property_array[TPART_BYTESNUM + LPARTHEAD_BYTESNUM + lPartValueBytesNum];
-	    int cur1=property_array[TPART_BYTESNUM + LPARTHEAD_BYTESNUM + lPartValueBytesNum + 1];
-	    quickMatcher = (quickMatcher & 0x0FF00) | (cur0 & 0x0FF);
-	    quickMatcher = (quickMatcher & 0x0FF) | ((cur1 & 0x0FF) << 8);
-	    
-	    long totalLen = property_array.length;
-	    switch (lPartValueBytesNum-1){
-	        case 0:
-	            lPart = (lPart & 0xffffffffffff00ffL) | (totalLen << 8);
-	            lPart = (lPart & 0xffffffff0000ffffL) | (quickMatcher << 16);
-	            break;
-	        case 1:
-	            lPart = (lPart & 0xffffffffff0000ffL) | (totalLen << 8);
-	            lPart = (lPart & 0xffffff0000ffffffL) | (quickMatcher << 24);
-	            break;
-	        case 2:
-	            lPart = (lPart & 0xffffffff000000ffL) | (totalLen << 8);
-	            lPart = (lPart & 0xffff0000ffffffffL) | (quickMatcher << 32);
-	            break;
-	        case 3:
-	            lPart = (lPart & 0xffffff00000000ffL) | (totalLen << 8);
-	            lPart = (lPart & 0xff0000ffffffffffL) | (quickMatcher << 40);
-	            break;
-	    }
 
+		long totalLen = property_array.length;
+		lPart = (lPart & 0xffffff00000000ffL) | (totalLen << 8);
+
+	    if(quickMatcherBytesNum!=0) {
+			long quickMatcher = 0;
+			int cur0 = property_array[TPART_BYTESNUM + LPARTHEAD_BYTESNUM + lPartValueBytesNum];
+			int cur1 = property_array[TPART_BYTESNUM + LPARTHEAD_BYTESNUM + lPartValueBytesNum + 1];
+			quickMatcher = (quickMatcher & 0x0FF00) | (cur0 & 0x0FF);
+			quickMatcher = (quickMatcher & 0x0FF) | ((cur1 & 0x0FF) << 8);
+
+			switch (lPartValueBytesNum - 1) {
+				case 0:
+					lPart = (lPart & 0xffffffff0000ffffL) | (quickMatcher << 16);
+					break;
+				case 1:
+					lPart = (lPart & 0xffffff0000ffffffL) | (quickMatcher << 24);
+					break;
+				case 2:
+					lPart = (lPart & 0xffff0000ffffffffL) | (quickMatcher << 32);
+					break;
+				case 3:
+					lPart = (lPart & 0xff0000ffffffffffL) | (quickMatcher << 40);
+					break;
+			}
+		}
 	    //vPart
 	    char[] vPart_arr = Arrays.copyOfRange(property_array, TPART_BYTESNUM + LPARTHEAD_BYTESNUM + 
 	    		lPartValueBytesNum + getQuickMatcherBytesNum(),property_array.length);

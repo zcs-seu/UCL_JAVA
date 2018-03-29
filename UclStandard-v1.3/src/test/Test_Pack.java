@@ -183,6 +183,7 @@ public class Test_Pack {
 		UCLPropertyBase spaceEnemyS = GenZCPSProperty.genSpaceEnemyS("坦克;;潜艇",0);
 		zcps.setProperty(spaceEnemyS);
 
+
 		UCLPropertyBase amf = GenZCPSProperty.genAbsMotionFea("10;;北纬N39°40′20.09″ 东经E116°32′13.51",1,0);
 		zcps.setProperty(amf);
 
