@@ -1,6 +1,6 @@
-package cn.edu.seu.utils;
-import java.lang.String;
-/** 
+package tools;
+
+/**
  * CRC16相关计算  
  
  * encode: utf-8 

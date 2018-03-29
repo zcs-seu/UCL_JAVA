@@ -1,6 +1,6 @@
 package ucl.code;
-import cn.edu.seu.utils.CRC16;
-import java.io.*;
+import tools.CRC16;
+
 public class UCLCode {
 	/**
 	 * <p>Class description: UCLCode,ucl Code class</p>

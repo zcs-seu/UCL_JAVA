@@ -1,4 +1,4 @@
-package cn.edu.seu.utils;
+package tools;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

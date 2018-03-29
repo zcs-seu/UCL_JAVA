@@ -9,8 +9,8 @@ import ucl.property.base.UCLPropertyHead;
 import ucl.property.base.UCLPropertySet;
 import ucl.code.UCLCodeExtention;
 import ucl.property.info.UCLPropertiesInfo;
-import cn.edu.seu.utils.Encrypt;
-import cn.edu.seu.utils.Sig_RSA_DSA_ECDSA;
+import tools.Encrypt;
+import tools.Sig_RSA_DSA_ECDSA;
 
 public class UCLPackage {
 	/**

@@ -1,4 +1,4 @@
-package cn.edu.seu.utils;
+package tools;
 
 import java.io.UnsupportedEncodingException;
 
