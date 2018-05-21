@@ -26,7 +26,7 @@ public class UCLPropertyBase {
 	protected long lPart;
 	//V:
 	protected String vPart;
-	//¸ÃÊı¾İ³ÉÔ±×¨ÎªUCLPropertyHeadÀàÉè¼Æ,ÎªÁË¸üºÃµÄsetTotalLength,getTotalLength
+	//è¯¥æ•°æ®æˆå‘˜ä¸“ä¸ºUCLPropertyHeadç±»è®¾è®¡,ä¸ºäº†æ›´å¥½çš„setTotalLength,getTotalLength
 	int quickMatcherBytesNum;
 	
 	public UCLPropertyBase() {
@@ -230,7 +230,7 @@ public class UCLPropertyBase {
 		return lPartHead;
 	}
 	
-	public boolean setLPartHead(int start, int end, int head)//headÕªÒªËã·¨£¨2,5£©
+	public boolean setLPartHead(int start, int end, int head)//headæ‘˜è¦ç®—æ³•ï¼ˆ2,5ï¼‰
 	{
 	    assert(start>=0 && start <= 7 && end>=0 && end<=7 && start < end);
 	    long num=0,cur=1;
@@ -389,8 +389,8 @@ public class UCLPropertyBase {
 	}
 	
 	
-	//´ò°ü½â°üµ¥¸öÊôĞÔ
-	//´ò°ü
+	//æ‰“åŒ…è§£åŒ…å•ä¸ªå±æ€§
+	//æ‰“åŒ…
 	public String pack(){
 		StringBuilder property=new StringBuilder();
 	    property.append((char)(tPart&0x0FF));
@@ -403,7 +403,7 @@ public class UCLPropertyBase {
 
 	    return property.toString();
 	}
-	//½â°ü
+	//è§£åŒ…
 	public void unpack(String property){
 		
 		 //tPart

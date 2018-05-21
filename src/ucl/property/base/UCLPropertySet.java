@@ -27,7 +27,7 @@ public class UCLPropertySet {
 	
 	public UCLPropertySet() {
 		
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ„é€ å‡½æ•°å­˜æ ¹
 		propertyHead = new UCLPropertyHead();
 		
 	}
@@ -88,7 +88,7 @@ public class UCLPropertySet {
 	}
 	
 	
-	//ÉèÖÃproperthHeadÀà±ğ
+	//è®¾ç½®properthHeadç±»åˆ«
     public void setHeadCategory(int category){
     	
     	propertyHead.setCategory(category);
@@ -101,7 +101,7 @@ public class UCLPropertySet {
     }
     
     
-    //ÉèÖÃpropertyHead helper
+    //è®¾ç½®propertyHead helper
     public void setHeadHelper(int helper)
     {
         propertyHead.setHelper(helper);
@@ -113,7 +113,7 @@ public class UCLPropertySet {
     }
     
     
-    //ÉèÖÃÊôĞÔ É¾³ıÊôĞÔ
+    //è®¾ç½®å±æ€§ åˆ é™¤å±æ€§
     public boolean setProperty(UCLPropertyBase property){
     	
     	properties.put(property.getCategory(), property);
@@ -131,7 +131,7 @@ public class UCLPropertySet {
     	
     }
     
-    //¸ù¾İÊôĞÔºÅ²éÕÒÊôĞÔ¼¯ÖĞµÄÄ³¸öÊôĞÔ
+    //æ ¹æ®å±æ€§å·æŸ¥æ‰¾å±æ€§é›†ä¸­çš„æŸä¸ªå±æ€§
     public UCLPropertyBase getProperty(int category)
     {
         if(properties.containsKey(category)){
@@ -140,7 +140,7 @@ public class UCLPropertySet {
         return null;
     }
     
-    //ÉèÖÃÊôĞÔºÅÎªposµÄÊôĞÔµÄÖµÎªvalue
+    //è®¾ç½®å±æ€§å·ä¸ºposçš„å±æ€§çš„å€¼ä¸ºvalue
     public void setPropertyVPart(int pos, String value)
     {
     	UCLPropertyBase prop = getProperty(pos);
@@ -150,13 +150,13 @@ public class UCLPropertySet {
         setSet();
     }
     
-    //¸ù¾İÊôĞÔºÅposµÄÈ¡µÃÆä¶ÔÓ¦µÄÊôĞÔµÄÊôĞÔÖµ
+    //æ ¹æ®å±æ€§å·posçš„å–å¾—å…¶å¯¹åº”çš„å±æ€§çš„å±æ€§å€¼
     public String getPropertyVPart(int pos)
     {
         return properties.get(pos).getVPart();
     }
 
-    //¸ù¾İpropertiesÉú³ÉpropertyHeadµÄ¿ìËÙÆ¥Åä
+    //æ ¹æ®propertiesç”ŸæˆpropertyHeadçš„å¿«é€ŸåŒ¹é…
     public int generateQuickMatcher(){
     	int quickmatcher=0;
     	for(int i:properties.keySet()){
@@ -166,7 +166,7 @@ public class UCLPropertySet {
     }
     
     
-    //¸ù¾İpropertiesÉú³ÉpropertyHeadµÄvPart
+    //æ ¹æ®propertiesç”ŸæˆpropertyHeadçš„vPart
     public String generateHeadVPart(){
     	
     	int qm = propertyHead.getQuickMatcher();
@@ -182,7 +182,7 @@ public class UCLPropertySet {
         
     }
 
-    //³õÊ¼»¯¼¯ºÏ»òÉèÖÃpropertiesºó±ØĞëµ÷ÓÃµÄº¯Êı
+    //åˆå§‹åŒ–é›†åˆæˆ–è®¾ç½®propertiesåå¿…é¡»è°ƒç”¨çš„å‡½æ•°
     public void setSet(){
     	
     	propertyHead.setQuickMatcher(generateQuickMatcher());
@@ -191,7 +191,7 @@ public class UCLPropertySet {
     }
     
     
-    //ÊôĞÔ¼¯ºÏ´ò°ü½â°ü
+    //å±æ€§é›†åˆæ‰“åŒ…è§£åŒ…
     public String pack(){
     	
     	return propertyHead.pack();
@@ -205,9 +205,9 @@ public class UCLPropertySet {
     	int tmp = 0;
     	for(int i=0;i<16;i++){
     		if((qm&(0x0001<<i))!=0){
-    			//¼ÆËãÊôĞÔ¼¯ºÏÍ·²¿ÊôĞÔ³¤¶ÈÖµ×Ö¶Î×Ö½ÚÊı
+    			//è®¡ç®—å±æ€§é›†åˆå¤´éƒ¨å±æ€§é•¿åº¦å€¼å­—æ®µå­—èŠ‚æ•°
                 int lValueBytes = ((headVPart.toCharArray()[1+tmp] & 0x0FF) >> 6) + 1;
-                //È¡³ö³¤¶ÈÖµ×Ö¶Î
+                //å–å‡ºé•¿åº¦å€¼å­—æ®µ
                 char[] lValue = headVPart.substring(2+tmp, 2+tmp+lValueBytes).toCharArray();
                 int lValueNum = 0;
                 for(int j=0; j < lValue.length; j++)
@@ -239,7 +239,7 @@ public class UCLPropertySet {
     }
     
     /**
-	 * ¿ØÖÆÌ¨Êä³öÊôĞÔ¼¯ºÏ
+	 * æ§åˆ¶å°è¾“å‡ºå±æ€§é›†åˆ
 	 * @return void
 	 * @author zhangcs
 	 * @since 2017-5-12
@@ -248,21 +248,21 @@ public class UCLPropertySet {
     {
 
 		if (propertyHead.getCategory() == 1 || propertyHead.getCategory() == 15) {
-			System.out.println("ÊôĞÔ¼¯ºÏÃû: " + UCLPackage.UPI.getPropertySetCategory(propertyHead.getCategory()));
-			System.out.println("ÊôĞÔ¼¯Àà±ğ: " + (int)propertyHead.getCategory()+"    ÊôĞÔ¸öÊı: "+(int)propertyHead.getSize());
+			System.out.println("å±æ€§é›†åˆå: " + UCLPackage.UPI.getPropertySetCategory(propertyHead.getCategory()));
+			System.out.println("å±æ€§é›†ç±»åˆ«: " + (int)propertyHead.getCategory()+"    å±æ€§ä¸ªæ•°: "+(int)propertyHead.getSize());
 			for(int category:properties.keySet()) {
-				System.out.println("ÊôĞÔÀà±ğ: "+properties.get(category).getCategory()+"    ÊôĞÔÃû: "+UCLPackage.UPI.getPropertyCategroy
+				System.out.println("å±æ€§ç±»åˆ«: "+properties.get(category).getCategory()+"    å±æ€§å: "+UCLPackage.UPI.getPropertyCategroy
 						(propertyHead.getCategory(), properties.get(category).getCategory()));
 				UCLPackage.UPI.showProperty(propertyHead.getCategory(), properties.get(category));
 				System.out.println("------------------------------------");
 			}
 		}
 		else {
-			System.out.println("×Ô¶¨ÒåÊôĞÔ¼¯ºÏ");
-			System.out.println("ÊôĞÔ¼¯Àà±ğ: " + propertyHead.getCategory() + "    ÊôĞÔ¸öÊı: " + propertyHead.getSize());
+			System.out.println("è‡ªå®šä¹‰å±æ€§é›†åˆ");
+			System.out.println("å±æ€§é›†ç±»åˆ«: " + propertyHead.getCategory() + "    å±æ€§ä¸ªæ•°: " + propertyHead.getSize());
 
 			for(int category:properties.keySet()) {
-				System.out.println("ÊôĞÔÀà±ğºÍÊôĞÔÖµ: "+properties.get(category).getCategory()+
+				System.out.println("å±æ€§ç±»åˆ«å’Œå±æ€§å€¼: "+properties.get(category).getCategory()+
 						"   "+properties.get(category).getVPart());
 				System.out.println("------------------------------------");
 			}

@@ -16,10 +16,10 @@ public class GenCDPSProperty {
     }
 
     /*
-    µÚÒ»×Ó·ÖÁ¿£¬³¤¶ÈÍ·²¿×Ö½Ú£¬ËüµÄ 0 ¡« 7 Î»º¬ÒåÈçÏÂ£º
-    µÚ 0 ¡« 2 Î»±£Áô£¬º¬ÒåÔÝÎ´¶¨Òå£»
-    µÚ 3 ¡« 5 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾ÄÚÈÝ¹Ø¼ü´Ê¸öÊý£¬Ò»°ã²»³¬¹ý 5 ¸ö£¬ 111 ±íÊ¾³¬¹ý 7 ¸ö£»
-    µÚ 6 ¡« 7 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾³¤¶ÈÖµ×Ó·ÖÁ¿ËùÕ¼×Ö½ÚÊý£¬ 10¡¢ 11 Îª·Ç·¨È¡Öµ
+    ç¬¬ä¸€å­åˆ†é‡ï¼Œé•¿åº¦å¤´éƒ¨å­—èŠ‚ï¼Œå®ƒçš„ 0 ï½ž 7 ä½å«ä¹‰å¦‚ä¸‹ï¼š
+    ç¬¬ 0 ï½ž 2 ä½ä¿ç•™ï¼Œå«ä¹‰æš‚æœªå®šä¹‰ï¼›
+    ç¬¬ 3 ï½ž 5 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºå†…å®¹å…³é”®è¯ä¸ªæ•°ï¼Œä¸€èˆ¬ä¸è¶…è¿‡ 5 ä¸ªï¼Œ 111 è¡¨ç¤ºè¶…è¿‡ 7 ä¸ªï¼›
+    ç¬¬ 6 ï½ž 7 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºé•¿åº¦å€¼å­åˆ†é‡æ‰€å å­—èŠ‚æ•°ï¼Œ 10ã€ 11 ä¸ºéžæ³•å–å€¼
      */
     //keywords
     public static UCLPropertyBase genKeywords(int count, String vPart, int helper){
@@ -39,10 +39,10 @@ public class GenCDPSProperty {
         return aabstract;
     }
     /*
-    µÚÒ»×Ó·ÖÁ¿£¬³¤¶ÈÍ·²¿×Ö½Ú£¬ËüµÄ 0 ¡« 7 Î»º¬ÒåÈçÏÂ£º
-    µÚ 0 ¡« 2 Î»£¬ÆäÖµ±íÊ¾×÷ÕßÈËÊý£¬ 111 ±íÊ¾³¬¹ý 6 ¸ö£»
-    µÚ 3 ¡« 5 Î»£¬ÆäÖµ±íÊ¾×÷Õßµ¥Î»¸öÊý£¬ 111 ±íÊ¾³¬¹ý 6 ¸ö£»
-    µÚ 6 ¡« 7 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾³¤¶ÈÖµ×Ó·ÖÁ¿ËùÕ¼×Ö½ÚÊý£¬ 10¡¢ 11 Îª·Ç·¨È¡Öµ¡£
+    ç¬¬ä¸€å­åˆ†é‡ï¼Œé•¿åº¦å¤´éƒ¨å­—èŠ‚ï¼Œå®ƒçš„ 0 ï½ž 7 ä½å«ä¹‰å¦‚ä¸‹ï¼š
+    ç¬¬ 0 ï½ž 2 ä½ï¼Œå…¶å€¼è¡¨ç¤ºä½œè€…äººæ•°ï¼Œ 111 è¡¨ç¤ºè¶…è¿‡ 6 ä¸ªï¼›
+    ç¬¬ 3 ï½ž 5 ä½ï¼Œå…¶å€¼è¡¨ç¤ºä½œè€…å•ä½ä¸ªæ•°ï¼Œ 111 è¡¨ç¤ºè¶…è¿‡ 6 ä¸ªï¼›
+    ç¬¬ 6 ï½ž 7 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºé•¿åº¦å€¼å­åˆ†é‡æ‰€å å­—èŠ‚æ•°ï¼Œ 10ã€ 11 ä¸ºéžæ³•å–å€¼ã€‚
      */
 
     //author
@@ -60,11 +60,11 @@ public class GenCDPSProperty {
     }
 
     /*
-    µÚÒ»×Ó·ÖÁ¿£¬³¤¶ÈÍ·²¿×Ö½Ú£¬ËüµÄ 0 ¡« 7 Î»º¬ÒåÈçÏÂ£º
-    µÚ 0 ¡« 5 Î»£¬±íÊ¾ËÙÅäÐÅÏ¢£¬¿ìËÙÖ¸Ê¾¾ßÌå°üº¬ÓÐÄÄÐ©ÄÚÈÝÊµÌå£¬
-    ÈôÆäÖÐµÄµÚ X Î»£¨0 ¡Ü X ¡Ü 5£©È¡ 1£¬±íÊ¾ºóÐøÓÐÀà±ðºÅÎª X µÄÄÚÈÝÊµÌå£»
-    ÈôÆäÖÐµÄµÚ X Î»£¨0 ¡Ü X ¡Ü 5£©È¡ 0£¬±íÊ¾ºóÐøÎÞÀà±ðºÅÎª X µÄÄÚÈÝÊµÌå¡£
-    µÚ 6 ¡« 7 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾³¤¶ÈÖµ×Ó·ÖÁ¿ËùÕ¼×Ö½ÚÊý£¬ 10¡¢ 11 Îª·Ç·¨È¡Öµ¡£
+    ç¬¬ä¸€å­åˆ†é‡ï¼Œé•¿åº¦å¤´éƒ¨å­—èŠ‚ï¼Œå®ƒçš„ 0 ï½ž 7 ä½å«ä¹‰å¦‚ä¸‹ï¼š
+    ç¬¬ 0 ï½ž 5 ä½ï¼Œè¡¨ç¤ºé€Ÿé…ä¿¡æ¯ï¼Œå¿«é€ŸæŒ‡ç¤ºå…·ä½“åŒ…å«æœ‰å“ªäº›å†…å®¹å®žä½“ï¼Œ
+    è‹¥å…¶ä¸­çš„ç¬¬ X ä½ï¼ˆ0 â‰¤ X â‰¤ 5ï¼‰å– 1ï¼Œè¡¨ç¤ºåŽç»­æœ‰ç±»åˆ«å·ä¸º X çš„å†…å®¹å®žä½“ï¼›
+    è‹¥å…¶ä¸­çš„ç¬¬ X ä½ï¼ˆ0 â‰¤ X â‰¤ 5ï¼‰å– 0ï¼Œè¡¨ç¤ºåŽç»­æ— ç±»åˆ«å·ä¸º X çš„å†…å®¹å®žä½“ã€‚
+    ç¬¬ 6 ï½ž 7 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºé•¿åº¦å€¼å­åˆ†é‡æ‰€å å­—èŠ‚æ•°ï¼Œ 10ã€ 11 ä¸ºéžæ³•å–å€¼ã€‚
      */
     //entity
     public static UCLPropertyBase genEntity(int quickMatch, String vPart, int helper){
@@ -78,10 +78,10 @@ public class GenCDPSProperty {
     }
 
     /*
-    µÚÒ»×Ó·ÖÁ¿£¬³¤¶ÈÍ·²¿×Ö½Ú£¬ËüµÄ 0 ¡« 7 Î»º¬ÒåÈçÏÂ£º
-    µÚ 0 ¡« 2 Î»±£Áô£¬º¬ÒåÔÝÎ´¶¨Òå£»
-    µÚ 3 ¡« 5 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾ÄÚÈÝ±ê¼ÇµÄ¸öÊý£¬Ò»°ã²»³¬¹ý 5 ¸ö£¬ 111 ±íÊ¾³¬¹ý 7 ¸ö£»
-    µÚ 6 ¡« 7 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾³¤¶ÈÖµ×Ó·ÖÁ¿ËùÕ¼×Ö½ÚÊý£¬ 10¡¢ 11 Îª·Ç·¨È¡Öµ¡£
+    ç¬¬ä¸€å­åˆ†é‡ï¼Œé•¿åº¦å¤´éƒ¨å­—èŠ‚ï¼Œå®ƒçš„ 0 ï½ž 7 ä½å«ä¹‰å¦‚ä¸‹ï¼š
+    ç¬¬ 0 ï½ž 2 ä½ä¿ç•™ï¼Œå«ä¹‰æš‚æœªå®šä¹‰ï¼›
+    ç¬¬ 3 ï½ž 5 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºå†…å®¹æ ‡è®°çš„ä¸ªæ•°ï¼Œä¸€èˆ¬ä¸è¶…è¿‡ 5 ä¸ªï¼Œ 111 è¡¨ç¤ºè¶…è¿‡ 7 ä¸ªï¼›
+    ç¬¬ 6 ï½ž 7 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºé•¿åº¦å€¼å­åˆ†é‡æ‰€å å­—èŠ‚æ•°ï¼Œ 10ã€ 11 ä¸ºéžæ³•å–å€¼ã€‚
      */
     //Tag
     public static UCLPropertyBase genTag(int count, String vPart, int helper){
@@ -121,10 +121,10 @@ public class GenCDPSProperty {
 
 
     /*
-    µÚÒ»×Ó·ÖÁ¿£¬³¤¶ÈÍ·²¿×Ö½Ú£¬ËüµÄ 0 ¡« 7 Î»º¬ÒåÈçÏÂ£º
-    µÚ 0 ¡« 2 Î»±£Áô£¬º¬ÒåÔÝÎ´¶¨Òå £»
-    µÚ 3 ¡« 5 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾ ucl  µÄ¸öÊý£¬ 111 ±íÊ¾³¬¹ý 7 ¸ö£»
-    µÚ 6 ¡« 7 Î»£¬ÆäÖµ¼Ó 1 ±íÊ¾³¤¶ÈÖµ×Ó·ÖÁ¿ËùÕ¼×Ö½ÚÊý£¬ 10¡¢ 11 Îª·Ç·¨È¡Öµ¡£
+    ç¬¬ä¸€å­åˆ†é‡ï¼Œé•¿åº¦å¤´éƒ¨å­—èŠ‚ï¼Œå®ƒçš„ 0 ï½ž 7 ä½å«ä¹‰å¦‚ä¸‹ï¼š
+    ç¬¬ 0 ï½ž 2 ä½ä¿ç•™ï¼Œå«ä¹‰æš‚æœªå®šä¹‰ ï¼›
+    ç¬¬ 3 ï½ž 5 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤º ucl  çš„ä¸ªæ•°ï¼Œ 111 è¡¨ç¤ºè¶…è¿‡ 7 ä¸ªï¼›
+    ç¬¬ 6 ï½ž 7 ä½ï¼Œå…¶å€¼åŠ  1 è¡¨ç¤ºé•¿åº¦å€¼å­åˆ†é‡æ‰€å å­—èŠ‚æ•°ï¼Œ 10ã€ 11 ä¸ºéžæ³•å–å€¼ã€‚
      */
     //Related ucl
     public static UCLPropertyBase genRelatedUCL(int count, String vPart, int helper){

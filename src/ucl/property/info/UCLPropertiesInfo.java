@@ -40,65 +40,65 @@ public class UCLPropertiesInfo {
     }
 
     public void initPropertyHeadMap() {
-        propertyHeadMap.put(0,"±£Áô");
-        propertyHeadMap.put(1,"ÖĞÎÄ");
-        propertyHeadMap.put(2,"Ó¢ÎÄ");
-        propertyHeadMap.put(3,"·¨ÎÄ");
-        propertyHeadMap.put(4,"¶íÎÄ");
-        propertyHeadMap.put(5,"°¢À­²®ÎÄ");
-        propertyHeadMap.put(6,"Î÷°àÑÀÎÄ");
-        propertyHeadMap.put(7,"ÆÏÌÑÑÀÎÄ");
-        propertyHeadMap.put(8,"µÂÎÄ");
-        propertyHeadMap.put(9,"ÈÕÎÄ");
-        // 10-14ÔİÎ´¶¨Òå
-        propertyHeadMap.put(15,"ÆäËüÓïÖÖ");
+        propertyHeadMap.put(0,"ä¿ç•™");
+        propertyHeadMap.put(1,"ä¸­æ–‡");
+        propertyHeadMap.put(2,"è‹±æ–‡");
+        propertyHeadMap.put(3,"æ³•æ–‡");
+        propertyHeadMap.put(4,"ä¿„æ–‡");
+        propertyHeadMap.put(5,"é˜¿æ‹‰ä¼¯æ–‡");
+        propertyHeadMap.put(6,"è¥¿ç­ç‰™æ–‡");
+        propertyHeadMap.put(7,"è‘¡è„ç‰™æ–‡");
+        propertyHeadMap.put(8,"å¾·æ–‡");
+        propertyHeadMap.put(9,"æ—¥æ–‡");
+        // 10-14æš‚æœªå®šä¹‰
+        propertyHeadMap.put(15,"å…¶å®ƒè¯­ç§");
     }
 
     public String getPropertyLangType(int type) {
         if (!propertyHeadMap.containsKey(type)){
-            return "×Ô¶¨ÒåÀàĞÍ";
+            return "è‡ªå®šä¹‰ç±»å‹";
         } else{
             return propertyHeadMap.get(type);
         }
     }
 
     public void initPropertySetCategoryMap() {
-        // 0µÄÊôĞÔ¼¯ºÏ±£Áô£¬2¡«14ÊôĞÔ¼¯ºÏÎ´¶¨Òå
-        propertySetCategoryMap.put(1,"ÄÚÈİÃèÊöÊôĞÔ¼¯ºÏ");
-        propertySetCategoryMap.put(15,"ÄÚÈİ¹ÜÀíÊôĞÔ¼¯ºÏ");
+        // 0çš„å±æ€§é›†åˆä¿ç•™ï¼Œ2ï½14å±æ€§é›†åˆæœªå®šä¹‰
+        propertySetCategoryMap.put(1,"å†…å®¹æè¿°å±æ€§é›†åˆ");
+        propertySetCategoryMap.put(15,"å†…å®¹ç®¡ç†å±æ€§é›†åˆ");
     }
 
     public String getPropertySetCategory(int type) {
         if (!propertySetCategoryMap.containsKey(type))
-            return "×Ô¶¨Òå¼¯ºÏ";
+            return "è‡ªå®šä¹‰é›†åˆ";
         else
             return propertySetCategoryMap.get(type);
     }
 
     public void initPropertyCategroyMap(){
         Map<Integer, String> cdps = new HashMap<>();
-        cdps.put(1,"ÄÚÈİ±êÌâ") ;
-        cdps.put(2,"ÄÚÈİ¹Ø¼ü´Ê") ;
-        cdps.put(3,"ÄÚÈİÕªÒª") ;
-        cdps.put(4,"ÄÚÈİ×÷Õß") ;
-        cdps.put(5,"ÄÚÈİÊµÌå") ;
-        cdps.put(6,"ÄÚÈİ±ê¼Ç") ;
-        cdps.put(7,"°æÈ¨ĞÅÏ¢") ;
-        cdps.put(8,"Ô­´´ÉùÃ÷") ;
-        cdps.put(9,"ÎÄ¼şĞÅÏ¢") ;
-        cdps.put(14,"¹ØÁªUCL") ;
-        cdps.put(15,"ÄÚÈİ¶ÔÏó") ;
+        cdps.put(1,"å†…å®¹æ ‡é¢˜") ;
+        cdps.put(2,"å†…å®¹å…³é”®è¯") ;
+        cdps.put(3,"å†…å®¹æ‘˜è¦") ;
+        cdps.put(4,"å†…å®¹ä½œè€…") ;
+        cdps.put(5,"å†…å®¹å®ä½“") ;
+        cdps.put(6,"å†…å®¹æ ‡è®°") ;
+        cdps.put(7,"ç‰ˆæƒä¿¡æ¯") ;
+        cdps.put(8,"åŸåˆ›å£°æ˜") ;
+        cdps.put(9,"æ–‡ä»¶ä¿¡æ¯") ;
+        cdps.put(14,"å…³è”UCL") ;
+        cdps.put(15,"å†…å®¹å¯¹è±¡") ;
 
         propertyCategoryMap.put(1,cdps) ;
 
         Map<Integer, String> cgps = new HashMap<>();
-        cgps.put(3,"ÄÚÈİ³ö´¦") ;
-        cgps.put(4,"ÄÚÈİID") ;
-        cgps.put(5,"´«²¥Â·¾¶") ;
-        cgps.put(12,"ÄÚÈİÊı×ÖÇ©Ãû") ;
-        cgps.put(13,"°²È«ÄÜ¼¶ĞÅÏ¢") ;
-        cgps.put(14,"ÄÚÈİÔğÈÎÁ´") ;
-        cgps.put(15,"È«UCL°üÊı×ÖÇ©Ãû") ;
+        cgps.put(3,"å†…å®¹å‡ºå¤„") ;
+        cgps.put(4,"å†…å®¹ID") ;
+        cgps.put(5,"ä¼ æ’­è·¯å¾„") ;
+        cgps.put(12,"å†…å®¹æ•°å­—ç­¾å") ;
+        cgps.put(13,"å®‰å…¨èƒ½çº§ä¿¡æ¯") ;
+        cgps.put(14,"å†…å®¹è´£ä»»é“¾") ;
+        cgps.put(15,"å…¨UCLåŒ…æ•°å­—ç­¾å") ;
 
         propertyCategoryMap.put(15,cgps);
     }
@@ -109,16 +109,16 @@ public class UCLPropertiesInfo {
 
 
     public void initInfo() {
-        entity.put(0,"ÈË");
-        entity.put(1,"Ê±");
-        entity.put(2,"µØ");
-        entity.put(3,"ÊÂ");
-        entity.put(4,"Òò");
-        entity.put(5,"ÆäËû");
+        entity.put(0,"äºº");
+        entity.put(1,"æ—¶");
+        entity.put(2,"åœ°");
+        entity.put(3,"äº‹");
+        entity.put(4,"å› ");
+        entity.put(5,"å…¶ä»–");
 
-        promap.put(1,"ÍøÖ·»òÓòÃû");
-        promap.put(2,"»ú¹¹Ãû");
-        promap.put(3,"Ó¦ÓÃÏà¹Ø");
+        promap.put(1,"ç½‘å€æˆ–åŸŸå");
+        promap.put(2,"æœºæ„å");
+        promap.put(3,"åº”ç”¨ç›¸å…³");
 
 
         contentIdRulemap.put(1,"URI");
@@ -127,13 +127,13 @@ public class UCLPropertiesInfo {
         contentIdRulemap.put(4,"ISRC");
 
 
-        seliMap.put(0,"×ÔĞĞ±ê¶¨");
-        seliMap.put(1,"µÚÒ»¼¶ÄÚÈİÌá¹©ÉÌÈÏÖ¤");
-        seliMap.put(2,"µÚ¶ş¼¶ÄÚÈİÌá¹©ÉÌÈÏÖ¤");
-        seliMap.put(14,"È¨ÍşÄÚÈİÖĞĞÄÈÏÖ¤");
+        seliMap.put(0,"è‡ªè¡Œæ ‡å®š");
+        seliMap.put(1,"ç¬¬ä¸€çº§å†…å®¹æä¾›å•†è®¤è¯");
+        seliMap.put(2,"ç¬¬äºŒçº§å†…å®¹æä¾›å•†è®¤è¯");
+        seliMap.put(14,"æƒå¨å†…å®¹ä¸­å¿ƒè®¤è¯");
 
 
-        signatureMap.put(0,"Î´¶ÔÄÚÈİ¶ÔÏó½øĞĞÊı×ÖÇ©Ãû");
+        signatureMap.put(0,"æœªå¯¹å†…å®¹å¯¹è±¡è¿›è¡Œæ•°å­—ç­¾å");
         signatureMap.put(1,"RSA");
         signatureMap.put(2,"ECDSA");
         signatureMap.put(3,"DSA");
@@ -176,7 +176,7 @@ public class UCLPropertiesInfo {
                     showCDPSRelatedUCL(propertyBase);
                     break;
                 default:
-                    System.out.println("****×Ô¶¨ÒåÊôĞÔ****");
+                    System.out.println("****è‡ªå®šä¹‰å±æ€§****");
             }
         }
         if (category == 15) {
@@ -203,13 +203,13 @@ public class UCLPropertiesInfo {
                     showCGPSSignatureUP(propertyBase);
                     break;
                 default:
-                    System.out.println("****×Ô¶¨ÒåÊôĞÔ****");
+                    System.out.println("****è‡ªå®šä¹‰å±æ€§****");
             }
         }
     }
 
     /*
-     * °üÀ¨£º
+     * åŒ…æ‹¬ï¼š
      * CDPS:
      * 1 Title
      * 3 Abstract
@@ -218,20 +218,20 @@ public class UCLPropertiesInfo {
      * 15 content object
      */
     void showPropertyBase(UCLPropertyBase propertyBase){
-        System.out.println("ÊôĞÔÖµ: "+propertyBase.getVPart());
+        System.out.println("å±æ€§å€¼: "+propertyBase.getVPart());
     }
 
     //CDPS, Keywords
     void showCDPSKeywords(UCLPropertyBase keywords){
         int count = keywords.getLPartHead(3, 5) + 1;
         if (count <=7){
-            System.out.println("¹Ø¼ü´ÊÊıÁ¿: "+count);
+            System.out.println("å…³é”®è¯æ•°é‡: "+count);
         }
         else{
-            System.out.println("¹Ø¼ü´ÊÊıÁ¿³¬¹ı7¸ö");
+            System.out.println("å…³é”®è¯æ•°é‡è¶…è¿‡7ä¸ª");
         }
 
-        System.out.print("¹Ø¼ü´Ê: ");
+        System.out.print("å…³é”®è¯: ");
 
         String[] keys = split(keywords.getVPart(), ";");
 
@@ -244,20 +244,20 @@ public class UCLPropertiesInfo {
         int authorCount = author.getLPartHead(0, 2);
         int comCount = author.getLPartHead(3, 5);
         if (authorCount < 7) {
-            System.out.print("×÷ÕßÊıÁ¿: "+authorCount);
+            System.out.print("ä½œè€…æ•°é‡: "+authorCount);
         }
         else {
-            System.out.print("×÷ÕßÊıÁ¿³¬¹ı6¸ö   ");
+            System.out.print("ä½œè€…æ•°é‡è¶…è¿‡6ä¸ª   ");
         }
 
         if (comCount < 7) {
-            System.out.println("¹«Ë¾ÊıÁ¿: "+comCount);
+            System.out.println("å…¬å¸æ•°é‡: "+comCount);
         }
         else {
-            System.out.println("¹«Ë¾ÊıÁ¿³¬¹ıÆß¸ö");
+            System.out.println("å…¬å¸æ•°é‡è¶…è¿‡ä¸ƒä¸ª");
         }
 
-        System.out.println("×÷Õß ----- ¹«Ë¾");
+        System.out.println("ä½œè€… ----- å…¬å¸");
         String[] res = split(author.getVPart(), "\\\\r");
 
         for(String tmp:res) {
@@ -292,13 +292,13 @@ public class UCLPropertiesInfo {
     public void showCDPSTag(UCLPropertyBase tag){
         int count = tag.getLPartHead(3, 5) + 1;
         if (count <=7) {
-            System.out.println("±ê¼ÇÊıÁ¿: "+count);
+            System.out.println("æ ‡è®°æ•°é‡: "+count);
         }
         else {
-            System.out.println("±ê¼ÇÊıÁ¿³¬¹ı7¸ö");
+            System.out.println("æ ‡è®°æ•°é‡è¶…è¿‡7ä¸ª");
         }
 
-        System.out.print("ÄÚÈİ±ê¼Ç: ");
+        System.out.print("å†…å®¹æ ‡è®°: ");
         String[] keys = split(tag.getVPart(), ";");
 
         System.out.println(String.join(" ", keys));
@@ -308,7 +308,7 @@ public class UCLPropertiesInfo {
     public void showCDPSFileInfo(UCLPropertyBase fileInfo){
         String[] files = split(fileInfo.getVPart(), ";");
 
-        System.out.print("ÎÄ¼şĞÅÏ¢: ");
+        System.out.print("æ–‡ä»¶ä¿¡æ¯: ");
         System.out.println(String.join(" ", files));
     }
 
@@ -316,15 +316,15 @@ public class UCLPropertiesInfo {
     public void showCDPSRelatedUCL(UCLPropertyBase relatedUCL){
         int count = relatedUCL.getLPartHead(3, 5) + 1;
         if (count <=7) {
-            System.out.println("¹ØÁªUCLÊıÁ¿: "+count);
+            System.out.println("å…³è”UCLæ•°é‡: "+count);
         }
         else {
-            System.out.println("¹ØÁªUCLÊıÁ¿³¬¹ı7¸ö");
+            System.out.println("å…³è”UCLæ•°é‡è¶…è¿‡7ä¸ª");
         }
 
-        System.out.println("--------------------------¹ØÁªUCL¿ªÊ¼-----------------------------");
+        System.out.println("--------------------------å…³è”UCLå¼€å§‹-----------------------------");
 
-        //ÔİÎ´¿¼ÂÇCodeÀ©Õ¹
+        //æš‚æœªè€ƒè™‘Codeæ‰©å±•
         String rus = relatedUCL.getVPart();
         char[] rusArr=rus.toCharArray();
         int pos = 0;
@@ -372,32 +372,32 @@ public class UCLPropertiesInfo {
             }
         }
 
-        System.out.println("--------------------------¹ØÁªUCL½áÊø-----------------------------");
+        System.out.println("--------------------------å…³è”UCLç»“æŸ-----------------------------");
     }
 
     //CGPS, provenance
     public void showCGPSProvenance(UCLPropertyBase provenance){
-        System.out.println("ÄÚÈİ³ö´¦ÃèÊöĞÎÊ½:  "+promap.get((int)provenance.getLPartHead(3, 5)));
-        System.out.println("ÄÚÈİ³ö´¦:  "+provenance.getVPart() );
+        System.out.println("å†…å®¹å‡ºå¤„æè¿°å½¢å¼:  "+promap.get((int)provenance.getLPartHead(3, 5)));
+        System.out.println("å†…å®¹å‡ºå¤„:  "+provenance.getVPart() );
     }
 
     //CGPS, content id
     public void showCGPSContentId(UCLPropertyBase content){
-        System.out.println("ÄÚÈİID½âÎö¹æÔò:  "+contentIdRulemap.get(content.getHelper()));
-        System.out.println("ÏêÏ¸ÄÚÈİIDĞÅÏ¢:  "+content.getVPart() );
+        System.out.println("å†…å®¹IDè§£æè§„åˆ™:  "+contentIdRulemap.get(content.getHelper()));
+        System.out.println("è¯¦ç»†å†…å®¹IDä¿¡æ¯:  "+content.getVPart() );
     }
 
     //CGPS, Propagation path
     public void showCGPSPropagationPath(UCLPropertyBase propagationPath){
         int count = propagationPath.getLPartHead(2, 5) + 1;
         if (count <=15) {
-            System.out.println("´«²¥Â·¾¶³¤¶È: "+count);
+            System.out.println("ä¼ æ’­è·¯å¾„é•¿åº¦: "+count);
         }
         else{
-            System.out.println("´«²¥Â·¾¶³¤¶È³¬¹ı15 ");
+            System.out.println("ä¼ æ’­è·¯å¾„é•¿åº¦è¶…è¿‡15 ");
         }
 
-        System.out.print("´«²¥Â·¾¶: ");
+        System.out.print("ä¼ æ’­è·¯å¾„: ");
         String[] keys = split(propagationPath.getVPart(), ";");
 
         System.out.println(String.join(" ", keys));
@@ -405,29 +405,29 @@ public class UCLPropertiesInfo {
 
     //CGPS, Signature of Content
     public void showCGPSSignatureContent(UCLPropertyBase sigContent){
-        System.out.println("Êı×ÖÕªÒªËã·¨:  "+hash.get((int)sigContent.getLPartHead(2, 5)));
-        System.out.println("Êı×ÖÇ©ÃûËã·¨:  "+signatureMap.get(sigContent.getHelper()));
-        System.out.println("ÕªÒª»òÇ©ÃûĞÅÏ¢:  "+sigContent.getVPart());
+        System.out.println("æ•°å­—æ‘˜è¦ç®—æ³•:  "+hash.get((int)sigContent.getLPartHead(2, 5)));
+        System.out.println("æ•°å­—ç­¾åç®—æ³•:  "+signatureMap.get(sigContent.getHelper()));
+        System.out.println("æ‘˜è¦æˆ–ç­¾åä¿¡æ¯:  "+sigContent.getVPart());
     }
 
     //CGPS, Security Energy Level Information
     void showCGPSSELI(UCLPropertyBase seli){
-        System.out.println("°²È«ÄÜ¼¶ĞÅÏ¢µÄÈÏÖ¤µÈ¼¶:  "+seliMap.get(seli.getHelper()));
-        System.out.println("°²È«ÄÜ¼¶ÏêÏ¸ĞÅÏ¢:  "+seli.getVPart());
+        System.out.println("å®‰å…¨èƒ½çº§ä¿¡æ¯çš„è®¤è¯ç­‰çº§:  "+seliMap.get(seli.getHelper()));
+        System.out.println("å®‰å…¨èƒ½çº§è¯¦ç»†ä¿¡æ¯:  "+seli.getVPart());
     }
 
     //CGPS, Chain of Responsibility
     void showCGPSChainRespons(UCLPropertyBase cr){
         int count = cr.getLPartHead(2, 5) + 1;
         if (count <= 15) {
-            System.out.println("ÔğÈÎÖ÷ÌåÊıÁ¿: "+count);
+            System.out.println("è´£ä»»ä¸»ä½“æ•°é‡: "+count);
         }
         else {
-            System.out.println("ÔğÈÎÖ÷ÌåÊıÁ¿³¬¹ı15¸ö ");
+            System.out.println("è´£ä»»ä¸»ä½“æ•°é‡è¶…è¿‡15ä¸ª ");
         }
 
 
-        System.out.print("ÔğÈÎÖ÷ÌåÏêÏ¸ĞÅÏ¢: ");
+        System.out.print("è´£ä»»ä¸»ä½“è¯¦ç»†ä¿¡æ¯: ");
         String[] keys = split(cr.getVPart(), ";");
 
         System.out.println(String.join(" ", keys));
@@ -435,8 +435,8 @@ public class UCLPropertiesInfo {
 
     //CGPS, Signature of ucl Package
     void showCGPSSignatureUP(UCLPropertyBase sup){
-        System.out.println("Êı×ÖÕªÒªËã·¨:  "+hash.get((int)sup.getLPartHead(2, 5)));
-        System.out.println("Êı×ÖÇ©ÃûËã·¨:  "+signatureMap.get(sup.getHelper()));
-        System.out.println("ÕªÒª»òÇ©ÃûĞÅÏ¢:  "+sup.getVPart());
+        System.out.println("æ•°å­—æ‘˜è¦ç®—æ³•:  "+hash.get((int)sup.getLPartHead(2, 5)));
+        System.out.println("æ•°å­—ç­¾åç®—æ³•:  "+signatureMap.get(sup.getHelper()));
+        System.out.println("æ‘˜è¦æˆ–ç­¾åä¿¡æ¯:  "+sup.getVPart());
     }
 }

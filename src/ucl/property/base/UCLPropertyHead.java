@@ -4,7 +4,7 @@ public class UCLPropertyHead extends UCLPropertyBase {
 	/**
 	* <p>Class description: UCLPropertyHead,ucl PropertyHead base class</p>
 	* <p>Copyright 2016: Future network research center, Southeast University</p>
-	* Note:Ôİ¶¨ÒÔUCLÊôĞÔ²¿·Ö×ÜÍ·²¿ÊµÏÖ¸ÃÀà
+	* Note:æš‚å®šä»¥UCLå±æ€§éƒ¨åˆ†æ€»å¤´éƒ¨å®ç°è¯¥ç±»
 	* @author zhangcs
 	* @version 1.0
 	* @since 2016-12-05
@@ -12,12 +12,12 @@ public class UCLPropertyHead extends UCLPropertyBase {
 	
 	
 	public UCLPropertyHead() {
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êı´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ„é€ å‡½æ•°å­˜æ ¹
 		setQuickMatcherBytesNum(2);
 	}
 	
 	
-	//number of UCLPropertySet:4b¡ª ¡ªÊôĞÔ¼¯ºÏ¸öÊı»òÊôĞÔÔªËØ¸öÊı
+	//number of UCLPropertySet:4bâ€” â€”å±æ€§é›†åˆä¸ªæ•°æˆ–å±æ€§å…ƒç´ ä¸ªæ•°
 	public int getSize(){
 		int cur = (int) (lPart&0x3C)>>2;
 		return (int) ((cur & 0x0F)+1);
@@ -54,7 +54,7 @@ public class UCLPropertyHead extends UCLPropertyBase {
 	    return quickMatcher;
 	}
 	public boolean setQuickMatcher(long j){
-		//¸ù¾İquickMatcherĞÅÏ¢¼ÆËãÊôĞÔÔªËØ¸öÊı
+		//æ ¹æ®quickMatcherä¿¡æ¯è®¡ç®—å±æ€§å…ƒç´ ä¸ªæ•°
 		long temp = j;
 	    byte size = 0;
 	    for(int i=0;i<16;i++){
@@ -64,7 +64,7 @@ public class UCLPropertyHead extends UCLPropertyBase {
 	    }
 	    setSize(size);
 
-	    //ÉèÖÃLPart¡¡quickMatcher²¿·Ö
+	    //è®¾ç½®LPartã€€quickMatcheréƒ¨åˆ†
 	    int lPartValueBytesNum = getLPartValueBytesNum();
 	    switch (lPartValueBytesNum){
 	        case 1:

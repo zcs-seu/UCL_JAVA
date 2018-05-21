@@ -76,13 +76,13 @@ public class GenCGPSProperty {
     }
 
     //signature of ucl package
-    public static UCLPropertyBase genUCLSig(int alg, int helper)//algժҪ��helperǩ��
+    public static UCLPropertyBase genUCLSig(int alg, int helper)//alg摘要，helper签名
     {
         assert(helper <= 5);
         assert(alg < 5);
 
         UCLPropertyBase signature=new UCLPropertyBase();
-        signature.setLPartHead(2, 5, alg);//algժҪ�㷨,helperǩ���㷨
+        signature.setLPartHead(2, 5, alg);//alg摘要算法,helper签名算法
         signature.setProperty(15, helper, "hello");
 
         return signature;

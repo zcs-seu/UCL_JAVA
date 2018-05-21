@@ -39,7 +39,7 @@ public class Test_Pack {
 	}
 
 
-	public static void setUclCode(UCLCode c){  //ÇëºÎÎ°ÁÁÍ¬Ñ§°´ÕÕC++×é´úÂë½«Á½´¦ĞŞ¸ÄÒ»ÖÂ
+	public static void setUclCode(UCLCode c){  //è¯·ä½•ä¼Ÿäº®åŒå­¦æŒ‰ç…§C++ç»„ä»£ç å°†ä¸¤å¤„ä¿®æ”¹ä¸€è‡´
 		byte version=1;
 		c.setVersion(version);
 		System.out.println(c.getVersion());
@@ -127,9 +127,9 @@ public class Test_Pack {
 		UCLPropertySet cdps = new UCLPropertySet();
 
 		cdps.setHeadCategory(1);
-		UCLPropertyBase title = GenCDPSProperty.genTitle("½­ËÕ½ñÄêÆğÊµÊ©¡°12311¡±¼Æ»® ÅàÓı°Ù¸öÅ©ÒµÌØÉ«Õò",2);
-		UCLPropertyBase file = GenCDPSProperty.genFileDescription("ÎÄ±¾;10M",2);
-		UCLPropertyBase content = GenCDPSProperty.genContObject("½­ËÕ½ñÄêÆğÊµÊ©¡°12311¡±¼Æ»®, È«Ê¡´´ÒâĞİÏĞÅ©Òµ¹¤×÷ÍÆ½ø»á",2);
+		UCLPropertyBase title = GenCDPSProperty.genTitle("æ±Ÿè‹ä»Šå¹´èµ·å®æ–½â€œ12311â€è®¡åˆ’ åŸ¹è‚²ç™¾ä¸ªå†œä¸šç‰¹è‰²é•‡",2);
+		UCLPropertyBase file = GenCDPSProperty.genFileDescription("æ–‡æœ¬;10M",2);
+		UCLPropertyBase content = GenCDPSProperty.genContObject("æ±Ÿè‹ä»Šå¹´èµ·å®æ–½â€œ12311â€è®¡åˆ’, å…¨çœåˆ›æ„ä¼‘é—²å†œä¸šå·¥ä½œæ¨è¿›ä¼š",2);
 		cdps.setProperty(title);
 		cdps.setProperty(file);
 		cdps.setProperty(content);
@@ -143,7 +143,7 @@ public class Test_Pack {
 
 		cgps.setHeadCategory(15);
 
-		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("½­ËÕ½ñÄêÆğÊµÊ©¡°12311¡±¼Æ»®, È«Ê¡´´ÒâĞİÏĞÅ©Òµ¹¤×÷ÍÆ½ø»á", 2, 1);
+		UCLPropertyBase sigCon = GenCGPSProperty.genContSig("æ±Ÿè‹ä»Šå¹´èµ·å®æ–½â€œ12311â€è®¡åˆ’, å…¨çœåˆ›æ„ä¼‘é—²å†œä¸šå·¥ä½œæ¨è¿›ä¼š", 2, 1);
 		cgps.setProperty(sigCon);
 
 		UCLPropertyBase sigUCL = GenCGPSProperty.genUCLSig(3, 1);
@@ -158,17 +158,17 @@ public class Test_Pack {
 
 		zcps.setHeadCategory(2);
 
-		UCLPropertyBase name = GenZCPSProperty.genName("Õ½³¡",0);
+		UCLPropertyBase name = GenZCPSProperty.genName("æˆ˜åœº",0);
 		zcps.setProperty(name);
 
-		UCLPropertyBase spaceLoc = GenZCPSProperty.genSpaceLoc("±±Î³N39¡ã40¡ä20.09¡å ¶«¾­E116¡ã32¡ä13.51",2,0);
+		UCLPropertyBase spaceLoc = GenZCPSProperty.genSpaceLoc("åŒ—çº¬N39Â°40â€²20.09â€³ ä¸œç»E116Â°32â€²13.51",2,0);
 		zcps.setProperty(spaceLoc);
 
 		String time_str=df.format(System.currentTimeMillis());
 		UCLPropertyBase time = GenZCPSProperty.genTime(time_str,2,0);
 		zcps.setProperty(time);
 
-		UCLPropertyBase shape = GenZCPSProperty.genShape("1;±±Î³N39¡ã40¡ä20.09¡å ¶«¾­E116¡ã32¡ä13.51",0);
+		UCLPropertyBase shape = GenZCPSProperty.genShape("1;åŒ—çº¬N39Â°40â€²20.09â€³ ä¸œç»E116Â°32â€²13.51",0);
 		zcps.setProperty(shape);
 
 		UCLPropertyBase phy = GenZCPSProperty.genPhysical("0;;1;",0);
@@ -180,17 +180,17 @@ public class Test_Pack {
 		UCLPropertyBase pass = GenZCPSProperty.genPassingAbility("1",0);
 		zcps.setProperty(pass);
 
-		UCLPropertyBase spaceEnemyS = GenZCPSProperty.genSpaceEnemyS("Ì¹¿Ë;;Ç±Í§",0);
+		UCLPropertyBase spaceEnemyS = GenZCPSProperty.genSpaceEnemyS("å¦å…‹;;æ½œè‰‡",0);
 		zcps.setProperty(spaceEnemyS);
 
 
-		UCLPropertyBase amf = GenZCPSProperty.genAbsMotionFea("10;;±±Î³N39¡ã40¡ä20.09¡å ¶«¾­E116¡ã32¡ä13.51",1,0);
+		UCLPropertyBase amf = GenZCPSProperty.genAbsMotionFea("10;;åŒ—çº¬N39Â°40â€²20.09â€³ ä¸œç»E116Â°32â€²13.51",1,0);
 		zcps.setProperty(amf);
 
-		UCLPropertyBase rmf = GenZCPSProperty.genRelMotionFea("10;100;±±Î³N39¡ã40¡ä20.09¡å ¶«¾­E116¡ã32¡ä13.51",1,0);
+		UCLPropertyBase rmf = GenZCPSProperty.genRelMotionFea("10;100;åŒ—çº¬N39Â°40â€²20.09â€³ ä¸œç»E116Â°32â€²13.51",1,0);
 		zcps.setProperty(rmf);
 
-		UCLPropertyBase tp = GenZCPSProperty.genTravellingPath("10;;±±Î³N39¡ã40¡ä20.09¡å ¶«¾­E116¡ã32¡ä13.51",2,0);
+		UCLPropertyBase tp = GenZCPSProperty.genTravellingPath("10;;åŒ—çº¬N39Â°40â€²20.09â€³ ä¸œç»E116Â°32â€²13.51",2,0);
 		zcps.setProperty(tp);
 
 		return zcps;
@@ -204,7 +204,7 @@ public class Test_Pack {
 		UCLCode code=generateCode();
 		ucl.setUclCode(code);
 
-		System.out.println("\n##############²âÊÔÊôĞÔ##############\n\n");
+		System.out.println("\n##############æµ‹è¯•å±æ€§##############\n\n");
 
 		UCLPropertySet cdps=generateCDPS();
 		ucl.setPropertySet(cdps);
@@ -217,7 +217,7 @@ public class Test_Pack {
 
 
 		/**
-		 * ²âÊÔ¹ØÁªUCL
+		 * æµ‹è¯•å…³è”UCL
 		 */
 
 		String rstr = "";
@@ -235,18 +235,18 @@ public class Test_Pack {
 
 		System.out.println("--------------UCLPackage-------------- \n");
 		printPackString(ucl.pack());
-		System.out.println("--------------ÏÔÊ¾UCL¸÷²¿·Ö¹Ø¼üĞÅÏ¢--------------\n");
+		System.out.println("--------------æ˜¾ç¤ºUCLå„éƒ¨åˆ†å…³é”®ä¿¡æ¯--------------\n");
 		ucl.showUCL();
 
 
-		System.out.println("\n##############²âÊÔ½â°ü##############\n\n");
+		System.out.println("\n##############æµ‹è¯•è§£åŒ…##############\n\n");
 		UCLPackage ucl2=new UCLPackage();
 		ucl2.unpack(ucl.pack());
 		System.out.println("--------------UCLPackage--------------\n");
 		printPackString(ucl2.pack());
 
 
-		System.out.println("--------------½â°üºóUCL¸÷²¿·Ö¹Ø¼üĞÅÏ¢--------------\n");
+		System.out.println("--------------è§£åŒ…åUCLå„éƒ¨åˆ†å…³é”®ä¿¡æ¯--------------\n");
 		ucl2.showUCL();
 
 		System.out.println("========== ucl test end==========\n");
@@ -255,7 +255,7 @@ public class Test_Pack {
 		System.out.println(ucl.getUclCode().getSizeOfContent());
 	}
 
-	public static UCLPackage generateRUCL() {//ÇëºÎÎ°ÁÁÍ¬Ñ§°´ÕÕC++×é´úÂë½«´Ë´¦CODE²¿·Ö´úÂëĞŞ¸ÄÒ»ÖÂ
+	public static UCLPackage generateRUCL() {//è¯·ä½•ä¼Ÿäº®åŒå­¦æŒ‰ç…§C++ç»„ä»£ç å°†æ­¤å¤„CODEéƒ¨åˆ†ä»£ç ä¿®æ”¹ä¸€è‡´
 		UCLPackage ucl=new UCLPackage();
 
 		UCLCode code_test=new UCLCode();
@@ -266,13 +266,13 @@ public class Test_Pack {
 		code_test.setPriority((byte) 15);
 		code_test.setFlag((byte)2); //00000010
 
-		code_test.setVersion((byte)3);//¶ÔÓÚÒÑ¾­ÉèÖÃ¹ıµÄÓòÖØ¸´ÉèÖÃ
+		code_test.setVersion((byte)3);//å¯¹äºå·²ç»è®¾ç½®è¿‡çš„åŸŸé‡å¤è®¾ç½®
 
 		ucl.setUclCode(code_test);
 
 		UCLPropertySet cdps=new UCLPropertySet();
 		cdps.setHeadCategory(1);
-		UCLPropertyBase title = GenCDPSProperty.genTitle("½­ËÕ½ñÄêÆğÊµÊ©¡°12311¡±¼Æ»® ÅàÓı°Ù¸öÅ©ÒµÌØÉ«Õò",2);
+		UCLPropertyBase title = GenCDPSProperty.genTitle("æ±Ÿè‹ä»Šå¹´èµ·å®æ–½â€œ12311â€è®¡åˆ’ åŸ¹è‚²ç™¾ä¸ªå†œä¸šç‰¹è‰²é•‡",2);
 		cdps.setProperty(title);
 
 		ucl.setPropertySet(cdps);
@@ -299,7 +299,7 @@ public class Test_Pack {
 		personal.setHeadCategory(10);
 
 		UCLPropertyBase name=new UCLPropertyBase();
-		name.setProperty(1, 1, "ÔøÅó");
+		name.setProperty(1, 1, "æ›¾æœ‹");
 		personal.setProperty(name);
 
 		UCLPropertyBase school=new UCLPropertyBase();
@@ -310,8 +310,8 @@ public class Test_Pack {
 	}
 
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		//²âÊÔÊôĞÔ²¿·Ö´ò°ü½â°ü
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		//æµ‹è¯•å±æ€§éƒ¨åˆ†æ‰“åŒ…è§£åŒ…
 		testUCL();
 		//testUCLPack();
 	}

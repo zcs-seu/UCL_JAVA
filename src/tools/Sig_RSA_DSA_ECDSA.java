@@ -10,7 +10,7 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.util.ArrayList;
 public class Sig_RSA_DSA_ECDSA {
-    //½øĞĞÊı×ÖÇ©ÃûÀàĞÍÑ¡Ôñ£¬¿´×îĞÂ°æ±¾µÄucl   1ÊÇRSA 2ÊÇECDSA 3ÊÇDSA   ÔİÊ±ºóÃæÁ½¸ö£¨ECCºÍHMAC Ã»ÓĞÕÒµ½·½·¨£©
+    //è¿›è¡Œæ•°å­—ç­¾åç±»å‹é€‰æ‹©ï¼Œçœ‹æœ€æ–°ç‰ˆæœ¬çš„ucl   1æ˜¯RSA 2æ˜¯ECDSA 3æ˜¯DSA   æš‚æ—¶åé¢ä¸¤ä¸ªï¼ˆECCå’ŒHMAC æ²¡æœ‰æ‰¾åˆ°æ–¹æ³•ï¼‰
     public static void main(String[] args) {
         String aabstract="abc";
         String sig=Sig_RSA_DSA_ECDSA.get_sig(1,aabstract);
@@ -56,8 +56,8 @@ public class Sig_RSA_DSA_ECDSA {
         }
         return null;
     }
-    // Éú³ÉÒ»¶ÔÎÄ¼ş myprikey.dat ºÍ mypubkey.dat Ë½Ô¿ºÍ¹«Ô¿
-    // ¹«Ô¿ÒªÓÃ»§·¢ËÍ ( ÎÄ¼ş , ÍøÂçµÈ·½·¨ ) ¸øÆäËüÓÃ»§ , Ë½Ô¿±£´æÔÚ±¾µØ
+    // ç”Ÿæˆä¸€å¯¹æ–‡ä»¶ myprikey.dat å’Œ mypubkey.dat ç§é’¥å’Œå…¬é’¥
+    // å…¬é’¥è¦ç”¨æˆ·å‘é€ ( æ–‡ä»¶ , ç½‘ç»œç­‰æ–¹æ³• ) ç»™å…¶å®ƒç”¨æˆ· , ç§é’¥ä¿å­˜åœ¨æœ¬åœ°
     public static boolean generatekey(ArrayList<String> strings ) {
         try {
             KeyPairGenerator keygen = KeyPairGenerator.getInstance(strings.get(0));
@@ -68,71 +68,71 @@ public class Sig_RSA_DSA_ECDSA {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("myprikey.dat"));
             out.writeObject(prikey);
             out.close();
-            System.out.println("Ğ´Èë¶ÔÏó prikeys ok");
+            System.out.println("å†™å…¥å¯¹è±¡ prikeys ok");
             out = new ObjectOutputStream(new FileOutputStream("mypubkey.dat"));
             out.writeObject(pubkey);
             out.close();
-            System.out.println("Ğ´Èë¶ÔÏó pubkeys ok");
-            System.out.println("Éú³ÉÃÜÔ¿¶Ô³É¹¦");
+            System.out.println("å†™å…¥å¯¹è±¡ pubkeys ok");
+            System.out.println("ç”Ÿæˆå¯†é’¥å¯¹æˆåŠŸ");
             return true;
         } catch (java.lang.Exception e) {
             e.printStackTrace();
-            System.out.println("Éú³ÉÃÜÔ¿¶ÔÊ§°Ü");
+            System.out.println("ç”Ÿæˆå¯†é’¥å¯¹å¤±è´¥");
             return false;
         }
     }
 
 
-    //´Ëº¯ÊıÓÃÓÚÉú³ÉÊı×ÖÇ©Ãû£¬²¢½«Æä·µ»Ø¡£
-    public static String get_sig(int style,String myinfo){//¸ù¾İ´«ÈëµÄÀàĞÍ½øĞĞ²Ù×÷
+    //æ­¤å‡½æ•°ç”¨äºç”Ÿæˆæ•°å­—ç­¾åï¼Œå¹¶å°†å…¶è¿”å›ã€‚
+    public static String get_sig(int style,String myinfo){//æ ¹æ®ä¼ å…¥çš„ç±»å‹è¿›è¡Œæ“ä½œ
         ArrayList<String> strings=get_type_string(style);
-        // Êı×ÖÇ©ÃûÉú³ÉÃÜÔ¿
-        // µÚÒ»²½Éú³ÉÃÜÔ¿¶Ô,Èç¹ûÒÑ¾­Éú³É¹ı , ±¾¹ı³Ì¾Í¿ÉÒÔÌø¹ı
-        // ¶ÔÓÃ»§À´½² myprikey.dat Òª±£´æÔÚ±¾µØ£¬¶ø mypubkey.dat ¸ø·¢²¼¸øÆäËüÓÃ»§
+        // æ•°å­—ç­¾åç”Ÿæˆå¯†é’¥
+        // ç¬¬ä¸€æ­¥ç”Ÿæˆå¯†é’¥å¯¹,å¦‚æœå·²ç»ç”Ÿæˆè¿‡ , æœ¬è¿‡ç¨‹å°±å¯ä»¥è·³è¿‡
+        // å¯¹ç”¨æˆ·æ¥è®² myprikey.dat è¦ä¿å­˜åœ¨æœ¬åœ°ï¼Œè€Œ mypubkey.dat ç»™å‘å¸ƒç»™å…¶å®ƒç”¨æˆ·
         if ((new java.io.File("myprikey.dat")).exists() == false) {
             if (generatekey(strings) == false) {
-                System.out.println("Éú³ÉÃÜÔ¿¶Ô°Ü");
+                System.out.println("ç”Ÿæˆå¯†é’¥å¯¹è´¥");
                 return null;
             }
         }
 
-        // µÚ¶ş²½ , ´ËÓÃ»§
-        // ´ÓÎÄ¼şÖĞ¶ÁÈëË½Ô¿ , ¶ÔÒ»¸ö×Ö·û´®½øĞĞÇ©Ãûºó±£´æÔÚÒ»¸öÎÄ¼ş (myinfo.dat) ÖĞ
-        // ²¢ÇÒÔÙ°Ñ myinfo.dat ·¢ËÍ³öÈ¥£¬ÎªÁË·½±ãÊı×ÖÇ©ÃûÒ²·Å½øÁË myifno.dat ÎÄ¼şÖĞ , µ±È»Ò²¿É·Ö±ğ·¢ËÍ
+        // ç¬¬äºŒæ­¥ , æ­¤ç”¨æˆ·
+        // ä»æ–‡ä»¶ä¸­è¯»å…¥ç§é’¥ , å¯¹ä¸€ä¸ªå­—ç¬¦ä¸²è¿›è¡Œç­¾ååä¿å­˜åœ¨ä¸€ä¸ªæ–‡ä»¶ (myinfo.dat) ä¸­
+        // å¹¶ä¸”å†æŠŠ myinfo.dat å‘é€å‡ºå»ï¼Œä¸ºäº†æ–¹ä¾¿æ•°å­—ç­¾åä¹Ÿæ”¾è¿›äº† myifno.dat æ–‡ä»¶ä¸­ , å½“ç„¶ä¹Ÿå¯åˆ†åˆ«å‘é€
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("myprikey.dat"));
             PrivateKey myprikey = (PrivateKey) in.readObject();
             in.close();
-            //myinfo = "ÎÒÊÇÀ´×Ô¶«ÄÏ´óÑ§µÄÕÅÏş¸Õ£¬ºÜ¸ßĞËÄÜ¹»ÔÚÎ´À´ÍøÂçÑĞ¾¿ÊÒ¹¤×÷¡£"; // ÒªÇ©ÃûµÄĞÅÏ¢
-            // ÓÃË½Ô¿¶ÔĞÅÏ¢Éú³ÉÊı×ÖÇ©Ãû
+            //myinfo = "æˆ‘æ˜¯æ¥è‡ªä¸œå—å¤§å­¦çš„å¼ æ™“åˆšï¼Œå¾ˆé«˜å…´èƒ½å¤Ÿåœ¨æœªæ¥ç½‘ç»œç ”ç©¶å®¤å·¥ä½œã€‚"; // è¦ç­¾åçš„ä¿¡æ¯
+            // ç”¨ç§é’¥å¯¹ä¿¡æ¯ç”Ÿæˆæ•°å­—ç­¾å
             Signature signet = Signature.getInstance(strings.get(1));
             signet.initSign(myprikey);
             signet.update(myinfo.getBytes());
-            byte[] signed = signet.sign(); // ¶ÔĞÅÏ¢µÄÊı×ÖÇ©Ãû
+            byte[] signed = signet.sign(); // å¯¹ä¿¡æ¯çš„æ•°å­—ç­¾å
             String sig=byte2hex(signed);
-            //System.out.println("signed( Ç©ÃûÄÚÈİ )=" + sig);
-            // °ÑĞÅÏ¢ºÍÊı×ÖÇ©Ãû±£´æÔÚÒ»¸öÎÄ¼şÖĞ
+            //System.out.println("signed( ç­¾åå†…å®¹ )=" + sig);
+            // æŠŠä¿¡æ¯å’Œæ•°å­—ç­¾åä¿å­˜åœ¨ä¸€ä¸ªæ–‡ä»¶ä¸­
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("myinfo.dat"));
             out.writeObject(myinfo);
             out.writeObject(signed);
             out.close();
-            //System.out.println("Ç©Ãû²¢Éú³ÉÎÄ¼ş³É¹¦");
+            //System.out.println("ç­¾åå¹¶ç”Ÿæˆæ–‡ä»¶æˆåŠŸ");
             return sig;
         } catch (java.lang.Exception e) {
             e.printStackTrace();
-            //System.out.println("Ç©Ãû²¢Éú³ÉÎÄ¼şÊ§°Ü");
+            //System.out.println("ç­¾åå¹¶ç”Ÿæˆæ–‡ä»¶å¤±è´¥");
         }
         return null;
 
     }
-    //´Ëº¯ÊıÓÃÓÚÑéÖ¤Êı×ÖÇ©ÃûÊÇ·ñÕıÈ·
+    //æ­¤å‡½æ•°ç”¨äºéªŒè¯æ•°å­—ç­¾åæ˜¯å¦æ­£ç¡®
     public static boolean check(int style ) {
         ArrayList<String> strings=get_type_string(style);
 
 
-        // µÚÈı²½ »ñµÃĞÅÏ¢¼ì²é
-        // ÆäËûÈËÍ¨¹ı¹«¹²·½Ê½µÃµ½´Ë»§µÄ¹«Ô¿ºÍÎÄ¼ş
-        // ÆäËûÈËÓÃ´Ë»§µÄ¹«Ô¿ , ¶ÔÎÄ¼ş½øĞĞ¼ì²é , Èç¹û³É¹¦ËµÃ÷ÊÇ´ËÓÃ»§·¢²¼µÄĞÅÏ¢ .
+        // ç¬¬ä¸‰æ­¥ è·å¾—ä¿¡æ¯æ£€æŸ¥
+        // å…¶ä»–äººé€šè¿‡å…¬å…±æ–¹å¼å¾—åˆ°æ­¤æˆ·çš„å…¬é’¥å’Œæ–‡ä»¶
+        // å…¶ä»–äººç”¨æ­¤æˆ·çš„å…¬é’¥ , å¯¹æ–‡ä»¶è¿›è¡Œæ£€æŸ¥ , å¦‚æœæˆåŠŸè¯´æ˜æ˜¯æ­¤ç”¨æˆ·å‘å¸ƒçš„ä¿¡æ¯ .
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("mypubkey.dat"));
             PublicKey pubkey = (PublicKey) in.readObject();
@@ -147,10 +147,10 @@ public class Sig_RSA_DSA_ECDSA {
             signetcheck.update(info.getBytes());
             if (signetcheck.verify(signed)) {
                 //System.out.println("info=" + info);
-                //System.out.println("Ç©ÃûÕı³£");
+                //System.out.println("ç­¾åæ­£å¸¸");
                 return true;
             } else
-                //System.out.println("·ÇÇ©ÃûÕı³£");
+                //System.out.println("éç­¾åæ­£å¸¸");
             return false;
         } catch (java.lang.Exception e) {
             e.printStackTrace();

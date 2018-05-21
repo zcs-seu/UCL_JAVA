@@ -7,16 +7,16 @@ public class ConvertCharSet {
 	private static String changeCharSet(  
             String str, String newCharset) throws UnsupportedEncodingException {  
         if (str != null) {  
-            // ÓÃÄ¬ÈÏ×Ö·û±àÂë½âÂë×Ö·û´®¡£  
+            // ç”¨é»˜è®¤å­—ç¬¦ç¼–ç è§£ç å­—ç¬¦ä¸²ã€‚  
             byte[] bs = str.getBytes();  
-            // ÓÃĞÂµÄ×Ö·û±àÂëÉú³É×Ö·û´®  
+            // ç”¨æ–°çš„å­—ç¬¦ç¼–ç ç”Ÿæˆå­—ç¬¦ä¸²  
             return new String(bs, newCharset);  
         }  
         return str;  
     }  
       
     /** 
-     * ×Ö·û´®×ª»¯ÎªUTF-8 
+     * å­—ç¬¦ä¸²è½¬åŒ–ä¸ºUTF-8 
      * @param str 
      * @return 
      */  
@@ -31,7 +31,7 @@ public class ConvertCharSet {
     }  
       
     /** 
-     * ×Ö½ÚÊı×é×ª»¯ÎªUTF-8 
+     * å­—èŠ‚æ•°ç»„è½¬åŒ–ä¸ºUTF-8 
      * @param bty 
      * @return 
      */  
